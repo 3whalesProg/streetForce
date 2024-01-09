@@ -75,7 +75,7 @@ const ProductPage = observer(() => {
             <div className="Product__Page-Wrapper">
               <div className="Product__Page-Info">
                 <div className="Product__Page-Slider">
-                        <Image width={300} height={300} src={'http://192.168.1.191:7000/' + img[0]} style={{marginRight: '110px', marginLeft: '110px'}} />
+                        <Image width={300} height={300} src={'http://localhost:7000/' + img[0]} style={{marginRight: '110px', marginLeft: '110px'}} />
                 </div>
                 <div>
                         <div key={deviceWatch.id} className="Product__Page-Size-Main">

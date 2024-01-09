@@ -35,6 +35,7 @@ const ShopPage = () => {
             await getProducts(offset)
             .then(response => {
                 const res = response.data.rows
+                console.log(res)
                 setProductList([...productList, ...res])
             })}
             if(type){
