@@ -1,0 +1,119 @@
+@import '../../../colors.scss';
+
+body{
+    background-color: $backgroundColor;
+    font-family:  Helvetica-light;
+    background-color: #f9f9f9;
+}
+
+.Basket__Container{
+    max-width: 1350px;
+    margin: 70px auto;
+    font-family: Helvetica-Regular;
+}
+
+.Basket__Title{
+    margin: 50px 0px 30px 0px;
+    font-family: Helvetica-Regular;
+    font-size: 28px;
+    letter-spacing: 3px;
+
+}
+
+.Basket__Wrapper-Flex-Item{
+    display: flex;
+}
+
+.Basket__Wrapper-Flex-Items{
+    margin-left: 20px;
+}
+
+
+
+.Basket__Wrapper-Flex-Items-Title{
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-family: Helvetica-light;
+    font-size: 20px;
+    gap: 50px;
+}
+
+.Basket__Wrapper-Flex-Items-Text{
+    font-family: Helvetica-light;
+}
+
+.Basket__Wrapper-Flex-Items-Price{
+    display: flex;
+    margin-top: 80px;
+    font-family: Helvetica-light;
+    font-size: 20px;
+    justify-content: space-between;
+}
+
+.Basket__Wrapper{
+    display: flex;
+    gap: 50px;
+    min-height: 70vh;
+}
+
+.Basket__TypeBar{
+    width: 639px;
+    height: 190px;
+    background-color: #fff;
+}
+
+.Basket__TypeBar-Title{
+    font-family: Helvetica-light;
+    font-size: 20px;
+    border-bottom: 1px solid gray;
+    padding-bottom: 15px;
+}
+
+.Basket__TypeBar-Text{
+    margin-top: 15px;
+    font-family: Helvetica-Regular;
+    font-size: 16px;
+}
+
+.button{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #fff;
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .15rem;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      z-index: -2;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: darken(#F2F2F2, 15%);
+      transition: all .3s;
+      z-index: -1;
+    }
+    &:hover {
+      color: #fff;
+      &:before {
+        width: 100%;
+      }
+    }
+}

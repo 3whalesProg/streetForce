@@ -1,0 +1,126 @@
+
+
+.Product__Page-Container{
+    max-width: 1350px;
+    margin: 120px auto;
+    font-family:  Helvetica-light;
+}
+
+.Product__Page-Info{
+    display: flex;
+}
+
+.Product__Page-Size{
+    display: flex;
+    font-family:  Helvetica-light;
+}
+
+.Product__Page-Size-List{
+    display: flex;
+    gap: 5px;
+}
+
+.button_size{
+    width: 111px;
+    height: 50px;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+}
+
+.Product__Page-Size-Title{
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+.Product__Page-Size-Price{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.Product__Page-Size{
+    font-size: 20px;
+    margin-bottom: 50px;
+    
+}
+
+.Product__Page-Size-Button{
+    width: 600px;
+}
+
+.button_size{
+    margin: 10px;
+    
+}
+.button_size:hover{
+    background-color: #d9d9d9;
+    color: #fff;
+}
+
+.Product__Page-Size-Btn-Block{
+    display: flex;
+    gap: 21px;
+    margin-top: 40px;
+}
+
+.Product__Page-Size-Btn{
+    width: 244px;
+    height: 59px;
+    border-radius: 10px;
+
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #fff;
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .15rem;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      z-index: -2;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: darken(#F2F2F2, 15%);
+      transition: all .3s;
+      z-index: -1;
+    }
+    &:hover {
+      color: #fff;
+      &:before {
+        width: 100%;
+      }
+    }
+}
+
+.Product__Page-Info-Title{
+    display: flex;
+    margin-top: 170px;
+    text-align: center;
+}
+
+.Product__Page-Info-Text-Bottom{
+    margin-top: 20px;
+    text-align: center;
+}
+
+// .Product__Page-Info-Text-List{
+//     display: flex;
+//     justify-content: space-evenly;
+//     margin-top: 50px;
+// }
+
