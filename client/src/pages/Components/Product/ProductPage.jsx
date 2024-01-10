@@ -46,7 +46,7 @@ const ProductPage = observer(() => {
                 const res = {...response.data}
                 setDeviceWatch(res)
                 setInBasket(hasThisId(res.id))
-                setImg(res.img)
+                // setImg(res.img)
             })
         }
         catch(e){

@@ -59,6 +59,7 @@ const Basket = observer(() => {
         console.log(ger)
 
         setDevicesState(ger)
+        device.setDevices(ger)
     }
 
     useEffect(() => {
@@ -102,14 +103,17 @@ const Basket = observer(() => {
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
-<<<<<<< HEAD
-                                        <p>{item.price} Руб.</p>
-                                         <img src={like} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' /> 
-=======
-                                        <p >{item.price} Руб.</p>
-                                        {item.liked ? <div onClick={() => {addLike(item.id)}} >да</div> : <div onClick={() => {addLike(item.id)}}>нет</div> }
-                                        {/* <img src={like} style={{marginRight: '15px', cursor:'pointer'}} className='svg'/> */}
->>>>>>> b36ade9047ea89dacfba6428e9989514ce8d50c2
+                                        <p>{item.price} Руб.</p> 
+                                        {item.liked 
+                                        ? 
+                                        <img src={liked} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' onClick={() => {addLike(item.id)}}/>
+                                        // <div onClick={() => {addLike(item.id)}} >да</div> 
+                                        :
+                                        // <div >нет</div> 
+                                        <img src={like} style={{marginRight: '15px', cursor:'pointer' ,height: '22px'}} className='svg' onClick={() => {addLike(item.id)}}/>
+
+                                        }
+                                        
                                     </div>
                                 </div>
                                 
