@@ -38,6 +38,28 @@ const Basket = observer(() => {
         // setDevicesState(devicesState.filter(card => card.id !== id))
     }
 
+    const addLike = (id) =>{
+        console.log('функция сработала')
+        let ger = devicesState.map(item => {
+            if (item.id == id){
+                if (item.liked == undefined){
+                    return {...item, liked: true}
+                }
+                else{
+                    return {...item, liked: !item.liked }
+                }
+                
+            }
+            else{
+                return item
+            }
+
+        })
+        console.log(ger)
+
+        setDevicesState(ger)
+    }
+
     useEffect(() => {
         // device.devices
         // device.setDevices(device.devices)
@@ -79,8 +101,9 @@ const Basket = observer(() => {
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
-                                        <p>{item.price} Руб.</p>
-                                        <img src={like} style={{marginRight: '15px', cursor:'pointer'}} className='svg'/>
+                                        <p >{item.price} Руб.</p>
+                                        {item.liked ? <div onClick={() => {addLike(item.id)}} >да</div> : <div onClick={() => {addLike(item.id)}}>нет</div> }
+                                        {/* <img src={like} style={{marginRight: '15px', cursor:'pointer'}} className='svg'/> */}
                                     </div>
                                 </div>
                                 
