@@ -44,6 +44,7 @@ const ProductPage = observer(() => {
             await getCurrentProducts(id)
             .then(response => {
                 const res = {...response.data}
+                console.log(res)
                 setDeviceWatch(res)
                 setInBasket(hasThisId(res.id))
                 // setImg(res.img)

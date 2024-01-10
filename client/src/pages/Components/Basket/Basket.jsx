@@ -5,14 +5,16 @@ import Footer from '../footer/Footer.jsx';
 import { useContext, useEffect, useState} from 'react';
 import { Context } from '../../../main.jsx';
 import { observer } from 'mobx-react-lite';
-import liked from '../../../static/img/likes.png'
+import ilikes from '../../../static/img/ilikes.png'
 
 const Basket = observer(() => {
     const {device} = useContext(Context)
-    console.log(device)
-    const [devicesState, setDevicesState] = useState(device.devices) 
+    const {liked} = useContext(Context)
+    const [likedState, setLikedState] = useState(liked._likesPr)
+    const [devicesState, setDevicesState] = useState(device.devices)
     console.log(devicesState)
-    //Состояние для суммы
+
+
     const [sum, setSum] = useState(0)
     
      const sumBasket = (basket) => {
@@ -39,6 +41,8 @@ const Basket = observer(() => {
         // setDevicesState(devicesState.filter(card => card.id !== id))
     }
 
+
+
     const addLike = (id) =>{
         console.log('функция сработала')
         let ger = devicesState.map(item => {
@@ -56,10 +60,25 @@ const Basket = observer(() => {
             }
 
         })
+        setDevicesState(ger)
+        console.log(likedState)
+        device.setDevices(ger)
         console.log(ger)
 
-        setDevicesState(ger)
-        device.setDevices(ger)
+        let kot = devicesState.map(el => {
+            if(el.id == id){
+                return {...el}
+            }
+        })
+        
+
+        console.log(kot, 'кот')
+        setLikedState(kot[0])
+        liked.setAddLiked(kot[0])
+
+        
+        
+
     }
 
     useEffect(() => {
@@ -106,7 +125,7 @@ const Basket = observer(() => {
                                         <p>{item.price} Руб.</p> 
                                         {item.liked 
                                         ? 
-                                        <img src={liked} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' onClick={() => {addLike(item.id)}}/>
+                                        <img src={ilikes} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' onClick={() => {addLike(item.id)}}/>
                                         // <div onClick={() => {addLike(item.id)}} >да</div> 
                                         :
                                         // <div >нет</div> 

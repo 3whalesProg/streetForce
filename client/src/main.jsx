@@ -10,6 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Context.Provider
         value={{
             device: new DeviceStore(),
+            liked: new DeviceStore()
         }}
     >
         <App />

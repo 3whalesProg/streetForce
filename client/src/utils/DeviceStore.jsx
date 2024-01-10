@@ -5,6 +5,10 @@ export default class DeviceStore {
         this._devices = [
             
         ]
+
+        this._likesPr = [
+
+        ]
         makeAutoObservable(this)
     }
 
@@ -12,9 +16,21 @@ export default class DeviceStore {
         this._devices.push(product)
         console.log("Added device")
     }
+    setAddLiked(product) {
+        this._likesPr.push(product)
+        console.log("Added device")
+    }
 
     setDevices(devices){
         this._devices = devices
+    }
+
+     setLiked(product){
+        this._likesPr = product
+    }
+
+    get AddLiked(){
+        return this._likesPr 
     }
 
     get devices(){
