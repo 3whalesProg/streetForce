@@ -65,7 +65,7 @@ const Basket = observer(() => {
                         <div style={{display:'flex', gap: '20px'}}>
                         <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px', width: '750px'}}>
                                 <div className='Basket__Wrapper-Flex-Card-Img'>
-                                    <img src={item.img[0]} width='200' height='200' style={{padding: '20px'}}/>
+                                    <img src={'http://localhost:7000/' + item.img[0]} width='200' height='200' style={{padding: '20px'}}/>
                                 </div>
 
                                 <div className='Basket__Wrapper-Flex-Items'>
@@ -75,7 +75,7 @@ const Basket = observer(() => {
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Text'>
-                                        <p>{item.descr}</p>
+                                        <p>{item.description}</p>
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
