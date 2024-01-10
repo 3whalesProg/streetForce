@@ -10,7 +10,7 @@ import ilikes from '../../../static/img/ilikes.png'
 const Basket = observer(() => {
     const {device} = useContext(Context)
     const {liked} = useContext(Context)
-    const [likedState, setLikedState] = useState(liked._likesPr)
+    const [likedState, setLikedState] = useState(liked.Liked)
     const [devicesState, setDevicesState] = useState(device.devices)
     console.log(devicesState)
 
@@ -69,6 +69,7 @@ const Basket = observer(() => {
             if(el.id == id){
                 return {...el}
             }
+            return {...el}
         })
         
 

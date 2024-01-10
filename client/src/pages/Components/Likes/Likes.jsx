@@ -15,16 +15,17 @@ import { Context } from '../../../main.jsx';
 const Basket = observer(() => {
     const {liked} = useContext(Context)
     console.log(liked)
-    const [likedState, setLikedState] = useState([]) 
-   
+    const [likedState, setLikedState] = useState([])
+    console.log(likedState)
     
     useEffect(() => {
-        setLikedState(liked.AddLiked)
-        const liked123 = liked.AddLiked
-        setLikedState(liked123)
-        console.log(liked123)
-        console.log(liked.AddLiked)
+        setLikedState(liked.Liked)
+        // let liked123 = liked.AddLiked
+        // setLikedState(liked123)
+        console.log(liked._likesPr)
     }, [])
+    
+    console.log(likedState)
 
     return (
         <>
@@ -34,6 +35,7 @@ const Basket = observer(() => {
             </div>
            <div className='Basket__Wrapper' > 
                 <div className='Basket__Wrapper-Flex'>
+                    
                     {likedState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>

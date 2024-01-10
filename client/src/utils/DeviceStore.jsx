@@ -25,11 +25,7 @@ export default class DeviceStore {
         this._devices = devices
     }
 
-     setLiked(product){
-        this._likesPr = product
-    }
-
-    get AddLiked(){
+    get Liked(){
         return this._likesPr 
     }
 
