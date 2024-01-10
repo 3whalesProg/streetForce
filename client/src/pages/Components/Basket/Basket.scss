@@ -32,12 +32,18 @@ body{
 
 .Basket__Wrapper-Flex-Items-Title{
     display: flex;
+    width: 500px;
+    justify-content: space-between;
     margin-top: 25px;
     margin-bottom: 20px;
     font-family: Helvetica-light;
     font-size: 20px;
     gap: 50px;
 }
+
+// .svg{
+//     margin-left: 290px;
+// }
 
 .Basket__Wrapper-Flex-Items-Text{
     font-family: Helvetica-light;

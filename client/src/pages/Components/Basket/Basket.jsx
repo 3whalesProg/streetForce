@@ -1,5 +1,4 @@
 import './Basket.scss';
-import winter from '../../../static/img/winter.png'
 import cross from '../../../static/img/cross.svg'
 import like from '../../../static/img/like.svg'
 import Footer from '../footer/Footer.jsx';
@@ -11,6 +10,7 @@ const Basket = observer(() => {
     const {device} = useContext(Context)
     console.log(device)
     const [devicesState, setDevicesState] = useState(device.devices) 
+    console.log(devicesState)
     //Состояние для суммы
     const [sum, setSum] = useState(0)
     
@@ -63,15 +63,15 @@ const Basket = observer(() => {
                     devicesState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
-                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px'}}>
+                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px', width: '750px'}}>
                                 <div className='Basket__Wrapper-Flex-Card-Img'>
-                                    <img src={winter} width='200' height='200' style={{padding: '20px'}}/>
+                                    <img src={item.img[0]} width='200' height='200' style={{padding: '20px'}}/>
                                 </div>
 
                                 <div className='Basket__Wrapper-Flex-Items'>
                                     <div className='Basket__Wrapper-Flex-Items-Title'>
                                         <h1>{item.name}</h1>
-                                        <img src={cross} onClick={() => removeCard(item.id)} style={{marginRight: '15px', cursor:'pointer'}}/>
+                                        <img src={cross} onClick={() => removeCard(item.id)} style={{marginRight: '15px', cursor:'pointer'}} className='svg'/>
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Text'>
@@ -80,7 +80,7 @@ const Basket = observer(() => {
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
                                         <p>{item.price} Руб.</p>
-                                        <img src={like} style={{marginRight: '15px', cursor:'pointer'}}/>
+                                        <img src={like} style={{marginRight: '15px', cursor:'pointer'}} className='svg'/>
                                     </div>
                                 </div>
                                 
