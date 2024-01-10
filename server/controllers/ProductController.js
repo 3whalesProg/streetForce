@@ -1,19 +1,20 @@
-const { where } = require('sequelize')
 const {Product} = require('../models/models')
 
 class ProductController{
     async getAll(req,res){
         try{
-            let {offset} = req.query
-            let {type} = req.body
-            if (!type){
-                const products = await Product.findAndCountAll({offset: offset, limit: 2})
-                return res.json(products)
+            let {offset, type, brand, gender} = req.query
+            const newQuery = {}
+            for (let i in Object.keys(req.query)){
+                if (i != 0){
+                    if (Object.values(req.query)[i]){
+                        newQuery[Object.keys(req.query)[i]] = Object.values(req.query)[i] 
+                    }  
+                }
             }
-            else{
-                const products = await Product.findAndCountAll({where: {type} ,offset: offset, limit: 2})
+            console.log(newQuery)
+                const products = await Product.findAndCountAll({where: newQuery,offset: offset, limit: 2})
                 return res.json(products)
-            }
         }
         catch(e){
             console.log(e)

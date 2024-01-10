@@ -12,11 +12,14 @@ const ShopPage = () => {
     const [sortParams, setSortParams] = useState({
         brand: "",
         type: "",
+        gender: "",
         sort: "",
     })
+    const [newSortParams, setNewSortParams] = useState(false)
 
     const changeSortParams = (event) =>{
-        console.log('сработали параметры')
+        console.log(sortParams)
+        setNewSortParams(true)
         setSortParams({
             ...sortParams, [event.target.name]: event.target.value
         })
@@ -26,28 +29,25 @@ const ShopPage = () => {
     const showMore = (event) =>{
         event.preventDefault()
         setOffset(offset + 2)
-        getProductList(offset)
+        getProductList(offset + 2)
     }
 
-    const getProductList = async(offset, type) => {
+    const getProductList = async(offset) => {
         try{
-            if(!type){
-            await getProducts(offset)
+            console.log(sortParams.type, 'отправленный тип')
+            await getProducts(offset, sortParams.type, sortParams.brand, sortParams.gender)
             .then(response => {
                 const res = response.data.rows
-                console.log(res)
-                setProductList([...productList, ...res])
-            })}
-            if(type){
-                await getProducts(offset, type)
-                .then(response => {
-                    const res = response.data.rows
+                if (newSortParams){
+                    setProductList([...res])
+                    setNewSortParams(false)
+                    
+                }
+                else{
                     setProductList([...productList, ...res])
-                })
-
-            }
-
-        }
+                }
+                
+            })}        
         catch(e){
             console.log(e)
         }
@@ -55,13 +55,15 @@ const ShopPage = () => {
 
 
     useEffect(() =>{
-        getProductList(offset)
-        setOffset(offset + 2)
+        console.log('первый useeffect')
+        getProductList(0, sortParams.type)
+        setOffset(2)
     }, [])
 
     useEffect(() =>{
-        getProductList(offset, sortParams.type)
-        setOffset(2)
+        console.log('Новые параметры сортировки')
+        setOffset(0)
+        getProductList(0)
     }, [sortParams])
 
     return (
@@ -73,14 +75,8 @@ const ShopPage = () => {
                         <h1>ТОВАРЫ</h1>
                         <div className="ShopPage__gender">
                             <div className="ShopPage__gender-list">
-                                <li className="ShopPage__gender-item">
-                                    <input className="ShopPage__gender-mans" name="gender"type="radio" id = 'radio_mans'/>
-                                    <label htmlFor="radio_mans">Мужчины</label>
-                                </li>
-                                <li className="ShopPage__gender-item">
-                                    <input className="ShopPage__gender-womans"name="gender" type="radio" id = 'radio_womans'/>
-                                    <label htmlFor="radio_womans">Девушки</label>
-                                </li>
+                                <button name="gender" value='Man' onClick={changeSortParams}>Мужчины</button>
+                                <button name="gender" value = "Woman" onClick={changeSortParams}>Женщины</button>
                             </div>
                         </div>
                         <div className="ShopPage__sort">
@@ -101,9 +97,9 @@ const ShopPage = () => {
                                     </select>
                                 </li>
                                 <li className="ShopPage__sort-item">
-                                    <select name="brand">
+                                    <select name="brand" onChange={changeSortParams}>
                                         <option name="brand" disabled selected>Бренд</option>
-                                        <option name="brand">Nike</option>
+                                        <option name="brand" value="Nike">Nike</option>
                                         <option name="brand">Puma</option>
                                         <option name="brand">StreetForce</option> {/*Подтянуть с базы данных */}
                                     </select>
