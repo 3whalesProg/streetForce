@@ -5,6 +5,7 @@ import Footer from '../footer/Footer.jsx';
 import { useContext, useEffect, useState} from 'react';
 import { Context } from '../../../main.jsx';
 import { observer } from 'mobx-react-lite';
+import liked from '../../../static/img/likes.png'
 
 const Basket = observer(() => {
     const {device} = useContext(Context)
@@ -58,6 +59,7 @@ const Basket = observer(() => {
         console.log(ger)
 
         setDevicesState(ger)
+        device.setDevices(ger)
     }
 
     useEffect(() => {
@@ -101,9 +103,17 @@ const Basket = observer(() => {
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
-                                        <p >{item.price} Руб.</p>
-                                        {item.liked ? <div onClick={() => {addLike(item.id)}} >да</div> : <div onClick={() => {addLike(item.id)}}>нет</div> }
-                                        {/* <img src={like} style={{marginRight: '15px', cursor:'pointer'}} className='svg'/> */}
+                                        <p>{item.price} Руб.</p> 
+                                        {item.liked 
+                                        ? 
+                                        <img src={liked} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' onClick={() => {addLike(item.id)}}/>
+                                        // <div onClick={() => {addLike(item.id)}} >да</div> 
+                                        :
+                                        // <div >нет</div> 
+                                        <img src={like} style={{marginRight: '15px', cursor:'pointer' ,height: '22px'}} className='svg' onClick={() => {addLike(item.id)}}/>
+
+                                        }
+                                        
                                     </div>
                                 </div>
                                 
