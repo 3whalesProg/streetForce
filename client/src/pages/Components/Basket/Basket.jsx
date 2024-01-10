@@ -5,6 +5,7 @@ import Footer from '../footer/Footer.jsx';
 import { useContext, useEffect, useState} from 'react';
 import { Context } from '../../../main.jsx';
 import { observer } from 'mobx-react-lite';
+import liked from '../../../static/img/likes.png'
 
 const Basket = observer(() => {
     const {device} = useContext(Context)
@@ -80,7 +81,7 @@ const Basket = observer(() => {
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
                                         <p>{item.price} Руб.</p>
-                                        <img src={like} style={{marginRight: '15px', cursor:'pointer'}} className='svg'/>
+                                         <img src={like} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' /> 
                                     </div>
                                 </div>
                                 
