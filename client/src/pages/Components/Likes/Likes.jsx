@@ -18,6 +18,22 @@ const Basket = observer(() => {
     const [likedState, setLikedState] = useState([])
     console.log(likedState)
     
+    const removeCard = (id) => {
+        
+        // device.setDevices(device.devices.filter(card => card.id !== id))
+        // console.log(likedState[0].name)
+        let orders  = []
+        likedState.map(item => {
+            if (item.id != id){
+                orders.push(item)
+            }
+        })
+        setLikedState(orders)
+        liked.setLiked(orders)
+        // setDevicesState(devicesState.filter(card => card.id !== id))
+    }
+
+
     useEffect(() => {
         setLikedState(liked.Liked)
         // let liked123 = liked.AddLiked
@@ -47,7 +63,7 @@ const Basket = observer(() => {
                                 <div className='Basket__Wrapper-Flex-Items'>
                                     <div className='Basket__Wrapper-Flex-Items-Title'>
                                         <h1>{item.name}</h1>
-                                        <img src={cross}  style={{marginRight: '15px', cursor:'pointer'}}/>
+                                        <img src={cross}  style={{marginRight: '15px', cursor:'pointer'}} onClick={() => removeCard(item.id)}/>
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Text'>
@@ -56,7 +72,7 @@ const Basket = observer(() => {
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
                                         <p>{item.price} Руб.</p>
-                                        <img src={ilikes} height='20' style={{marginRight: '15px', cursor:'pointer'}}/>
+                                        <img src={ilikes} height='20' style={{marginRight: '15px', cursor:'pointer'}} onClick={() => removeCard(item.id)}/>
                                     </div>
                                 </div>
                                 

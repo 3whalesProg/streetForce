@@ -44,6 +44,7 @@ const Basket = observer(() => {
 
 
     const addLike = (id) =>{
+        console.log('addLike')
         console.log('функция сработала')
         let ger = devicesState.map(item => {
             if (item.id == id){
@@ -65,21 +66,62 @@ const Basket = observer(() => {
         device.setDevices(ger)
         console.log(ger)
 
-        let kot = devicesState.map(el => {
-            if(el.id == id){
-                return {...el}
+        // let kot = devicesState.map(el => {
+        //     if(el.id == id){
+        //         console.log(el.id)
+        //         return {...el}
+        //     }
+        // })
+        let kot = {
+
+        }
+
+        for(let i = 0; i < devicesState.length; i++){
+            if(devicesState[i].id == id){
+                kot = devicesState[i]
+                break;
             }
-            return {...el}
-        })
+        }
         
 
         console.log(kot, 'кот')
-        setLikedState(kot[0])
-        liked.setAddLiked(kot[0])
+        if(kot){
+            setLikedState(kot)
+            liked.setAddLiked(kot)
+        }
+    
+    }
 
-        
-        
+    const addLikeTwo = (id) => {
+        console.log('addLikeTwo')
+        console.log('функция сработала')
+        let ger = devicesState.map(item => {
+            if (item.id == id){
+                if (item.liked == undefined){
+                    return {...item, liked: true}
+                }
+                else{
+                    return {...item, liked: !item.liked }
+                }
+                
+            }
+            else{
+                return item
+            }
+        })
+        setDevicesState(ger)
+        console.log(likedState)
+        device.setDevices(ger)
+        console.log(ger)
 
+        // let orders  = []
+        // likedState.map(item => {
+        //     if (item.id != id){
+        //         orders.push(item)
+        //     }
+        // })
+        // setLikedState(orders)
+        // liked.setLiked(orders)
     }
 
     useEffect(() => {
@@ -126,11 +168,11 @@ const Basket = observer(() => {
                                         <p>{item.price} Руб.</p> 
                                         {item.liked 
                                         ? 
-                                        <img src={ilikes} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' onClick={() => {addLike(item.id)}}/>
+                                        <img src={ilikes} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' onClick={() => {addLikeTwo(item.id)}}/>
                                         // <div onClick={() => {addLike(item.id)}} >да</div> 
                                         :
                                         // <div >нет</div> 
-                                        <img src={like} style={{marginRight: '15px', cursor:'pointer' ,height: '22px'}} className='svg' onClick={() => {addLike(item.id)}}/>
+                                        <img src={like}  style={{marginRight: '15px', cursor:'pointer' ,height: '22px'}}  className='svg' onClick={() => {addLike(item.id)}}/>
 
                                         }
                                         
