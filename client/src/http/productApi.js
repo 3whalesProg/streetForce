@@ -1,7 +1,9 @@
 import { $host } from "./index";
 
-export const getProducts = async(offset, type) => {
-    const {data} = await $host.get('api/product/getProductList?offset=' + offset, type)
+export const getProducts = async(offset, type, brand, gender) => {
+    console.log(type)
+    console.log('api/product/getProductList?offset=' + offset, {type})
+    const {data} = await $host.get('api/product/getProductList?offset=' + offset + '&type=' + type + '&brand=' + brand + '&gender=' + gender)
     return {data}
 }
 
