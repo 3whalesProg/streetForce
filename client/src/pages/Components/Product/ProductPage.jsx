@@ -6,8 +6,8 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../../main";
 import { getCurrentProducts } from "../../../http/productApi";
 import { useLocation } from "react-router-dom";
-
-
+import like from '../../../static/img/like.svg'
+import ilikes from '../../../static//img/ilikes.png'
 
 const ProductPage = observer(() => {
 
@@ -15,6 +15,8 @@ const ProductPage = observer(() => {
 
     const {device} = useContext(Context)
     const [inBasket, setInBasket] = useState(false)
+    const {liked} = useContext(Context)
+   
 
     //Получаем состояние текущего товара
     const [deviceWatch, setDeviceWatch] = useState({
@@ -22,6 +24,9 @@ const ProductPage = observer(() => {
         price: 0,
         img: []
     })
+    const [newLike, setNewLike] = useState(false)
+
+    console.log(deviceWatch)
 
     const hasThisId = (id) => {
         let ger = false
@@ -73,6 +78,38 @@ const ProductPage = observer(() => {
         getProduct(productId)
     }, [])
 
+ const isLiked = (id) => {
+    for (let i in liked.Liked){
+        if (id == liked.Liked[i].id){
+            return true
+        }
+    }
+    return false
+}
+
+    const removeLike = () => {
+        let ger = []
+        for (let i in liked.Liked){
+            if (deviceWatch.id != liked.Liked[i].id){
+                ger.push(liked.Liked[i])
+            }
+        }
+        liked.setLiked(ger)
+        setNewLike(true)
+    }
+
+    
+    
+    const addLiked = () => {
+        liked.setAddLiked(deviceWatch)
+        setNewLike(true)
+    }
+    
+    useEffect(() => {
+        setNewLike(false)
+    }, [newLike])
+
+
     return (
         <>
         <div className="Product__Page-Container">
@@ -114,6 +151,12 @@ const ProductPage = observer(() => {
                                 {inBasket ? <button className="Product__Page-Size-Btn" disabled = {true}>Товар в корзине</button> : <button className="Product__Page-Size-Btn" onClick={addCard}>Добавить в корзину</button> }
                                 {/* <button className="Product__Page-Size-Btn" onClick={addCard}>Добавить в корзину</button> */}
                                 <button className="Product__Page-Size-Btn">Подобрать размер</button>
+                                {isLiked(deviceWatch.id)
+                                ?
+                                <img src={ilikes} style={{cursor:'pointer', height: '40px', marginTop: '10px'}} className='svg' onClick={removeLike}/>
+                                :
+                                <img src={like} style={{cursor:'pointer', height: '35px', marginTop: '10px'}} className='svg' onClick={addLiked}/>
+                                }
                             </div>
                             <div className="Product__Page-Info-Title">
                                 <h1 style={{borderBottom: '2px solid black', paddingLeft: '10px', paddingRight: '10px', paddingBottom: '5px', cursor:'pointer'}}>О товаре</h1>
