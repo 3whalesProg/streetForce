@@ -1,3 +1,4 @@
+import AdminPanel from "./pages/Components/AdminPanel/AdminPanel";
 import Basket from "./pages/Components/Basket/Basket";
 import Contact from "./pages/Components/Contact/Contact";
 import Likes from "./pages/Components/Likes/Likes";
@@ -30,9 +31,14 @@ export const publicRoutes = [
     {
         path: '*',
         Component: Main
-    },{
+    },
+    {
         path: 'product' + '/:id',
         Component: ProductPage
+    },
+    {
+        path: 'admin',
+        Component: AdminPanel
     }
 
 
