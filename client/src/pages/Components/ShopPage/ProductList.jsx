@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import like from '../../../static/img/like.svg'
 import { useContext, useEffect, useState } from "react";
 import { Context } from '../../../main.jsx';
-import ilikes from '../../../static/img/ilikes.png' 
+import ilikes from '../../../static/img/ilikes.svg' 
 
 const ProductList = ({productListProps}) =>{
     const {liked} = useContext(Context)

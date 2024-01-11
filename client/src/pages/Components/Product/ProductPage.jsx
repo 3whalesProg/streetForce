@@ -7,7 +7,7 @@ import { Context } from "../../../main";
 import { getCurrentProducts } from "../../../http/productApi";
 import { useLocation } from "react-router-dom";
 import like from '../../../static/img/like.svg'
-import ilikes from '../../../static//img/ilikes.png'
+import ilikes from '../../../static//img/ilikes.svg'
 
 const ProductPage = observer(() => {
 
