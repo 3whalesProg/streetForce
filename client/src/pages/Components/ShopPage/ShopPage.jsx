@@ -4,7 +4,6 @@ import Footer from '../footer/Footer'
 import { useEffect, useState } from 'react'
 import { getProducts } from '../../../http/productApi'
 import ProductList from './ProductList'
-import { useSearchParams } from 'react-router-dom'
 
 const ShopPage = () => {
     const [productList, setProductList] = useState([])
@@ -18,7 +17,6 @@ const ShopPage = () => {
     const [newSortParams, setNewSortParams] = useState(false)
 
     const changeSortParams = (event) =>{
-        console.log(sortParams)
         setNewSortParams(true)
         setSortParams({
             ...sortParams, [event.target.name]: event.target.value
@@ -26,11 +24,9 @@ const ShopPage = () => {
         
     }
 
-    const removeSortParams = (event, targetValue) =>{
-        console.log(targetValue)
+    const removeSortParams = (targetValue) =>{
         for (let i in Object.keys(sortParams)){
             if (targetValue == Object.values(sortParams)[i]){
-                console.log('сработал if', event.target.value, Object.values(sortParams)[i] )
                 const gav = {...sortParams, [Object.keys(sortParams)[i]]: ""} 
                 setSortParams(gav)
                 setNewSortParams(true)
@@ -48,7 +44,6 @@ const ShopPage = () => {
 
     const getProductList = async(offset) => {
         try{
-            console.log(sortParams.type, 'отправленный тип')
             await getProducts(offset, sortParams.type, sortParams.brand, sortParams.gender)
             .then(response => {
                 const res = response.data.rows
@@ -69,13 +64,11 @@ const ShopPage = () => {
 
 
     useEffect(() =>{
-        console.log('первый useeffect')
         getProductList(0, sortParams.type)
         setOffset(2)
     }, [])
 
     useEffect(() =>{
-        console.log('Новые параметры сортировки')
         setOffset(0)
         getProductList(0)
     }, [sortParams])
@@ -126,7 +119,7 @@ const ShopPage = () => {
                                     if (item){
                                     return(
                                         <>
-                                        <li className="ShopPage__sortParams-item" onClick={(e) => {removeSortParams(e, item)}}>
+                                        <li className="ShopPage__sortParams-item" onClick={() => {removeSortParams(item)}}>
                                             {item}
                                         </li>
                                         
@@ -143,21 +136,7 @@ const ShopPage = () => {
                             </ul>
                         </div>
                         <div className='Shop__Page-Pagination'>
-                                <div className="Shop__Page-Pagination-Item">
-                                    <button className="pagintaion"><p className='pagination-text'>1</p></button>
-                                    <button className="pagintaion" ><p className='pagination-text'>2</p></button>
-                                    <button className="pagintaion"><p className='pagination-text'>3</p></button>
-                                    <button className="pagintaion"><p className='pagination-text'>4</p></button>
-                                </div>
-
-                                <div className="Shop__Page-Pagination-Item">
-                                        <button className='Shop__Page-Pagination-Button' onClick={showMore}>Больше</button>
-                                </div>
-
-                                <div className="Shop__Page-Pagination-Item">
-                                    <button className='Shop__Page-Pagination-Stoped'>Назад</button>
-                                    <button className='Shop__Page-Pagination-Stoped'>Больше</button>
-                                </div>
+                            <button className='Shop__Page-Pagination-Button' onClick={showMore}>Больше</button>
                         </div>
                         <img className='ShopPage-banner' src={banner} alt="" />     
                 </div>

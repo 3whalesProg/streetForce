@@ -12,11 +12,9 @@ const Basket = observer(() => {
     const {liked} = useContext(Context)
     const [likedState, setLikedState] = useState(liked.Liked)
     const [devicesState, setDevicesState] = useState(device.devices)
-    console.log(devicesState)
 
 
     const [sum, setSum] = useState(0)
-    
      const sumBasket = (basket) => {
         let ger = 0;
         for(let i = 0; i < basket.length; i++){
@@ -27,9 +25,6 @@ const Basket = observer(() => {
    
 
     const removeCard = (id) => {
-        
-        // device.setDevices(device.devices.filter(card => card.id !== id))
-        console.log(devicesState[0].name)
         let orders  = []
         devicesState.map(item => {
             if (item.id != id){orders.push(item)}
@@ -37,15 +32,9 @@ const Basket = observer(() => {
         setDevicesState(orders)
         device.setDevices(orders)
         setSum(sumBasket(device.devices))
-        console.log(sum)
-        // setDevicesState(devicesState.filter(card => card.id !== id))
     }
 
-
-
     const addLike = (id) =>{
-        console.log('addLike')
-        console.log('функция сработала')
         let ger = devicesState.map(item => {
             if (item.id == id){
                 if (item.liked == undefined){
@@ -53,29 +42,15 @@ const Basket = observer(() => {
                 }
                 else{
                     return {...item, liked: !item.liked }
-                }
-                
+                }                
             }
             else{
                 return item
             }
-
         })
         setDevicesState(ger)
-        console.log(likedState)
         device.setDevices(ger)
-        console.log(ger)
-
-        // let kot = devicesState.map(el => {
-        //     if(el.id == id){
-        //         console.log(el.id)
-        //         return {...el}
-        //     }
-        // })
-        let kot = {
-
-        }
-
+        let kot = {}
         for(let i = 0; i < devicesState.length; i++){
             if(devicesState[i].id == id){
                 kot = devicesState[i]
@@ -83,8 +58,6 @@ const Basket = observer(() => {
             }
         }
         
-
-        console.log(kot, 'кот')
         if(kot){
             setLikedState(kot)
             liked.setAddLiked(kot)
@@ -93,8 +66,6 @@ const Basket = observer(() => {
     }
 
     const addLikeTwo = (id) => {
-        console.log('addLikeTwo')
-        console.log('функция сработала')
         let ger = devicesState.map(item => {
             if (item.id == id){
                 if (item.liked == undefined){
@@ -103,37 +74,20 @@ const Basket = observer(() => {
                 else{
                     return {...item, liked: !item.liked }
                 }
-                
             }
             else{
                 return item
             }
         })
         setDevicesState(ger)
-        console.log(likedState)
         device.setDevices(ger)
-        console.log(ger)
-
-        // let orders  = []
-        // likedState.map(item => {
-        //     if (item.id != id){
-        //         orders.push(item)
-        //     }
-        // })
-        // setLikedState(orders)
-        // liked.setLiked(orders)
     }
 
     useEffect(() => {
-        // device.devices
-        // device.setDevices(device.devices)
         setDevicesState(device.devices)
         setSum(sumBasket(device.devices))
-        console.log('useEffect')
     }, [])
 
-
-   
 
     return (
         <>        
@@ -143,9 +97,7 @@ const Basket = observer(() => {
             </div>
            <div className='Basket__Wrapper' > 
                 <div className='Basket__Wrapper-Flex'>
-                
-                    {
-                                            
+                    {                   
                     devicesState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
@@ -169,9 +121,7 @@ const Basket = observer(() => {
                                         {item.liked 
                                         ? 
                                         <img src={ilikes} style={{marginRight: '15px', cursor:'pointer', height: '22px'}} className='svg' onClick={() => {addLikeTwo(item.id)}}/>
-                                        // <div onClick={() => {addLike(item.id)}} >да</div> 
                                         :
-                                        // <div >нет</div> 
                                         <img src={like}  style={{marginRight: '15px', cursor:'pointer' ,height: '22px'}}  className='svg' onClick={() => {addLike(item.id)}}/>
 
                                         }

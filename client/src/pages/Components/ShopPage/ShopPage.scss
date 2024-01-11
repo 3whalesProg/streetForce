@@ -65,6 +65,7 @@ body{
 
 .ShopPage__Product-card{
     text-align: center;
+    position: relative;
 }
 
 .ShopPage__Product-card-title{
@@ -158,10 +159,15 @@ body{
     display: flex;
 }
 
+.ShopPage__like{
+  position: absolute;
+  right: 0;
+}
+
 .Shop__Page-Pagination-Button{
     width: 249px;
     height: 42px;
-
+    margin: auto;
     display: inline-block;
     cursor: pointer;
     border: 1px solid #fff;
