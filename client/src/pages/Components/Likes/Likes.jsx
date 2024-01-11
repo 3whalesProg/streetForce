@@ -1,6 +1,4 @@
 import '../Basket/Basket.scss';
-// import basket from '../Basket/FakeData.jsx'
-// import winter from '../../../static/img/winter.png'
 import cross from '../../../static/img/cross.svg'
 import ilikes from '../../../static/img/ilikes.png'
 import Footer from '../footer/Footer.jsx';
@@ -14,14 +12,9 @@ import { Context } from '../../../main.jsx';
 
 const Basket = observer(() => {
     const {liked} = useContext(Context)
-    console.log(liked)
     const [likedState, setLikedState] = useState([])
-    console.log(likedState)
     
     const removeCard = (id) => {
-        
-        // device.setDevices(device.devices.filter(card => card.id !== id))
-        // console.log(likedState[0].name)
         let orders  = []
         likedState.map(item => {
             if (item.id != id){
@@ -30,19 +23,13 @@ const Basket = observer(() => {
         })
         setLikedState(orders)
         liked.setLiked(orders)
-        // setDevicesState(devicesState.filter(card => card.id !== id))
     }
-
 
     useEffect(() => {
         setLikedState(liked.Liked)
-        // let liked123 = liked.AddLiked
-        // setLikedState(liked123)
         console.log(liked._likesPr)
     }, [])
     
-    console.log(likedState)
-
     return (
         <>
         <div className='Basket__Container'>
@@ -83,8 +70,6 @@ const Basket = observer(() => {
                 </div>
 
 
-           
-
             {likedState.length !== 0
                 ?
                 <div className='Likes__TypeBar'>
@@ -110,12 +95,7 @@ const Basket = observer(() => {
                 <div style={{margin: '0 auto', marginTop: '250px', fontSize: '26px'}}>
                 У вас пока что нет избранных!
             </div>
-            
             }
-                
-            
-
-
            </div>
         </div>
         <Footer/>

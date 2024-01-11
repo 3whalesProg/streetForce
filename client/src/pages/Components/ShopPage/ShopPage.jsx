@@ -26,6 +26,20 @@ const ShopPage = () => {
         
     }
 
+    const removeSortParams = (event, targetValue) =>{
+        console.log(targetValue)
+        for (let i in Object.keys(sortParams)){
+            if (targetValue == Object.values(sortParams)[i]){
+                console.log('сработал if', event.target.value, Object.values(sortParams)[i] )
+                const gav = {...sortParams, [Object.keys(sortParams)[i]]: ""} 
+                setSortParams(gav)
+                setNewSortParams(true)
+            }
+        }
+    }
+
+
+
     const showMore = (event) =>{
         event.preventDefault()
         setOffset(offset + 2)
@@ -75,21 +89,21 @@ const ShopPage = () => {
                         <h1>ТОВАРЫ</h1>
                         <div className="ShopPage__gender">
                             <div className="ShopPage__gender-list">
-                                <button name="gender" value='Man' onClick={changeSortParams}>Мужчины</button>
-                                <button name="gender" value = "Woman" onClick={changeSortParams}>Женщины</button>
+                                <button name="gender" value='Man' className='ShopPage__gender-button' onClick={changeSortParams}>Мужчины</button>
+                                <button name="gender" value = "Woman" className='ShopPage__gender-button' onClick={changeSortParams}>Женщины</button>
                             </div>
                         </div>
                         <div className="ShopPage__sort">
                             <ul className="ShopPage__sort-list">
                                 <li className="ShopPage__sort-item">
-                                    <select name="sort">
+                                    <select name="sort" className='ShopPage__sort-input'>
                                             <option name="sort" disabled selected>Сортировка</option>
                                             <option name="sort">По цене от минимальной</option>
                                             <option name="sort">По цене от максимальной</option>
                                     </select>
                                 </li>
                                 <li className="ShopPage__sort-item">
-                                    <select name="type" onChange={changeSortParams}>
+                                    <select name="type" className='ShopPage__sort-input' onChange={changeSortParams}>
                                         <option name="type" disabled selected>Тип одежды</option>
                                         <option name="type" value="sneakers">Кросы</option>
                                         <option name="type" value="Sweater">Толстовки</option>
@@ -97,13 +111,28 @@ const ShopPage = () => {
                                     </select>
                                 </li>
                                 <li className="ShopPage__sort-item">
-                                    <select name="brand" onChange={changeSortParams}>
+                                    <select name="brand" className='ShopPage__sort-input' onChange={changeSortParams}>
                                         <option name="brand" disabled selected>Бренд</option>
                                         <option name="brand" value="Nike">Nike</option>
                                         <option name="brand">Puma</option>
                                         <option name="brand">StreetForce</option> {/*Подтянуть с базы данных */}
                                     </select>
                                 </li>
+                            </ul>
+                        </div>
+                        <div className="ShopPage__sortParams">
+                            <ul className="ShopPage__sortParams-list">
+                                {Object.values(sortParams).map(item => {
+                                    if (item){
+                                    return(
+                                        <>
+                                        <li className="ShopPage__sortParams-item" onClick={(e) => {removeSortParams(e, item)}}>
+                                            {item}
+                                        </li>
+                                        
+                                        </>
+                                    )}
+                                })}
                             </ul>
                         </div>
                         <div className='ShopPage__Product'>
