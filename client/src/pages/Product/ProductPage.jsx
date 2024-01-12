@@ -1,12 +1,12 @@
 import {  Image } from "react-bootstrap";
 import './ProductPage.scss'
-import Footer from '../Components/footer/Footer'
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import { getCurrentProducts } from "../../http/productApi";
 import { useLocation } from "react-router-dom";
 import LikeButton from "../Components/LikeBut/LikeButton";
+import { Carousel } from 'react-bootstrap';
 
 const ProductPage = observer(() => {
     const location = useLocation()
@@ -63,8 +63,48 @@ const ProductPage = observer(() => {
         <div className="Product__Page-Container">
             <div className="Product__Page-Wrapper">
               <div className="Product__Page-Info">
-                <div className="Product__Page-Slider">
-                        <Image width={300} height={300} src={'http://localhost:7000/' + deviceWatch.img[0]} style={{marginRight: '110px', marginLeft: '110px'}} />
+                <div className="Product__Page-Slider" style={{width: '400px', marginRight: '55px',marginLeft: '25px', borderRadius: '15px', height: '400px'}}>
+                <Carousel style={{borderRadius: '15px'}}>
+        <Carousel.Item>
+                <img
+                 style={{borderRadius: '15px'}}
+                 src={'http://localhost:7000/' + deviceWatch.img[0]}
+                 alt='Bmw'
+                 height='400'
+                 width='400'
+                />
+        </Carousel.Item>
+
+        <Carousel.Item>
+                <img
+                style={{borderRadius: '15px'}}
+                src={'http://localhost:7000/' + deviceWatch.img[1]}
+                 alt='Bmw'
+                 height='400'
+                 width='400'
+                />
+        </Carousel.Item>
+
+        <Carousel.Item>
+                <img
+                style={{borderRadius: '15px'}}
+                src={'http://localhost:7000/' + deviceWatch.img[2]}
+                 alt='Bmw'
+                 height='400'
+                 width='400'
+                />
+        </Carousel.Item>
+
+        <Carousel.Item>
+                <img
+                style={{borderRadius: '15px'}}
+                src={'http://localhost:7000/' + deviceWatch.img[3]}
+                 alt='Bmw'
+                 height='400'
+                 width='400'
+                />
+        </Carousel.Item>
+        </Carousel>
                 </div>
                 <div>
                         <div key={deviceWatch.id} className="Product__Page-Size-Main">

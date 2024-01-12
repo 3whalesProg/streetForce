@@ -11,8 +11,6 @@ const ProductList = ({productListProps}) =>{
                     <Link to={`/product/${product.id}`} style={{textDecoration: 'none', color: 'black'}}>
                     <img className='ShopPage__Product-card-img' src={'http://localhost:7000/' + product.img[0]} width={"292"} height={"292"}/>
                     </Link>
-                    
-                    
                     <Link to={`/product/${product.id}`} style={{textDecoration: 'none', color: 'black'}}>
                     <p className='ShopPage__Product-card-price'>{product.price} руб.<div className=""></div></p>
                     <p className='ShopPage__Product-card-title'>{product.name}</p>
