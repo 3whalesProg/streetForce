@@ -1,10 +1,11 @@
-import AdminPanel from "./pages/Components/AdminPanel/AdminPanel";
-import Basket from "./pages/Components/Basket/Basket";
-import Contact from "./pages/Components/Contact/Contact";
-import Likes from "./pages/Components/Likes/Likes";
-import Main from "./pages/Components/Main/Main";
-import ProductPage from "./pages/Components/Product/ProductPage";
-import ShopPage from "./pages/Components/ShopPage/ShopPage";
+import AdminPanel from "./pages/AdminPanel/AdminPanel";
+import Basket from "./pages/Basket/Basket";
+import Contact from "./pages/Contact/Contact";
+import Likes from "./pages/Likes/Likes";
+
+import Main from "./pages/Main/Main";
+import ProductPage from "./pages/Product/ProductPage";
+import ShopPage from "./pages/ShopPage/ShopPage";
 
 export const publicRoutes = [
     {

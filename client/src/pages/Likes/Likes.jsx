@@ -1,16 +1,15 @@
 import '../Basket/Basket.scss';
-import cross from '../../../static/img/cross.svg'
-import ilikes from '../../../static/img/ilikes.png'
-import Footer from '../footer/Footer.jsx';
-import likes from './FakeData.jsx'
-import sneakers from '../../../static/img/sneakers.png'
-import serdce from '../../../static/img/like.svg'
+import cross from '../../static/img/cross.svg'
+import ilikes from '../../static/img/ilikes.png'
+import Footer from '../Components/footer/Footer';
+import sneakers from '../../static/img/sneakers.png'
+import serdce from '../../static/img/like.svg'
 import './Likes.scss'
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
-import { Context } from '../../../main.jsx';
+import { Context } from '../../main.jsx';
 
-const Basket = observer(() => {
+const Likes = observer(() => {
     const {liked} = useContext(Context)
     const [likedState, setLikedState] = useState([])
     
@@ -70,7 +69,7 @@ const Basket = observer(() => {
                 </div>
 
 
-            {likedState.length !== 0
+            {/* {likedState.length !== 0
                 ?
                 <div className='Likes__TypeBar'>
                 {likes.map(li => 
@@ -95,7 +94,7 @@ const Basket = observer(() => {
                 <div style={{margin: '0 auto', marginTop: '250px', fontSize: '26px'}}>
                 У вас пока что нет избранных!
             </div>
-            }
+            } */}
            </div>
         </div>
         <Footer/>
@@ -103,4 +102,4 @@ const Basket = observer(() => {
     );
 });
 
-export default Basket;
+export default Likes;

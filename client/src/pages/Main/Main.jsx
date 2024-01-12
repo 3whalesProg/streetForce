@@ -1,14 +1,14 @@
 import './main.scss'
-import djersi from '../../../static/img/djersi.png'
-import djersiTwo from '../../../static/img/djersiTwo.jpg'
-import winter from '../../../static/img/winter.png'
-import sweatwear from '../../../static/img/sweatwear.png'
-import black from '../../../static/img/black.png'
-import brown from '../../../static/img/brown.png'
-import purple from '../../../static/img/purple.png'
-import fendi from '../../../static/img/fendi.png'
+import djersi from '../../static/img/djersi.png'
+import djersiTwo from '../../static/img/djersiTwo.jpg'
+import winter from '../../static/img/winter.png'
+import sweatwear from '../../static/img/sweatwear.png'
+import black from '../../static/img/black.png'
+import brown from '../../static/img/brown.png'
+import purple from '../../static/img/purple.png'
+import fendi from '../../static/img/fendi.png'
 import { Link } from 'react-router-dom'
-import Footer from '../footer/Footer'
+import Footer from '../Components/footer/Footer'
 
 const Main = () => {
     return (

@@ -1,11 +1,11 @@
 import './Basket.scss';
-import cross from '../../../static/img/cross.svg'
-import like from '../../../static/img/like.svg'
-import Footer from '../footer/Footer.jsx';
+import cross from '../../static/img/cross.svg'
+import like from '../../static/img/like.svg'
+import Footer from '../Components/footer/Footer'
 import { useContext, useEffect, useState} from 'react';
-import { Context } from '../../../main.jsx';
+import { Context } from '../../main.jsx';
 import { observer } from 'mobx-react-lite';
-import ilikes from '../../../static/img/ilikes.png'
+import ilikes from '../../static/img/ilikes.png'
 
 const Basket = observer(() => {
     const {device} = useContext(Context)

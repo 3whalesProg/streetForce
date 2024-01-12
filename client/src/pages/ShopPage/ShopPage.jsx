@@ -1,8 +1,8 @@
-import banner from '../../../static/img/banner.png'
+import banner from '../../static/img/banner.png'
 import './ShopPage.scss'
-import Footer from '../footer/Footer'
+import Footer from '../Components/footer/Footer'
 import { useEffect, useState } from 'react'
-import { getProducts } from '../../../http/productApi'
+import { getProducts } from '../../http/productApi'
 import ProductList from './ProductList'
 
 const ShopPage = () => {

@@ -1,13 +1,13 @@
 import {  Image } from "react-bootstrap";
 import './ProductPage.scss'
-import Footer from "../footer/Footer";
+import Footer from '../Components/footer/Footer'
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
-import { Context } from "../../../main";
-import { getCurrentProducts } from "../../../http/productApi";
+import { Context } from "../../main";
+import { getCurrentProducts } from "../../http/productApi";
 import { useLocation } from "react-router-dom";
-import like from '../../../static/img/like.svg'
-import ilikes from '../../../static//img/ilikes.svg'
+import like from '../../static/img/like.svg'
+import ilikes from '../../static//img/ilikes.svg'
 
 const ProductPage = observer(() => {
 
