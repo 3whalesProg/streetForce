@@ -6,42 +6,27 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import { getCurrentProducts } from "../../http/productApi";
 import { useLocation } from "react-router-dom";
-import like from '../../static/img/like.svg'
-import ilikes from '../../static//img/ilikes.svg'
+import LikeButton from "../Components/LikeBut/LikeButton";
 
 const ProductPage = observer(() => {
-
     const location = useLocation()
-
     const {device} = useContext(Context)
     const [inBasket, setInBasket] = useState(false)
-    const {liked} = useContext(Context)
-   
-
     //Получаем состояние текущего товара
     const [deviceWatch, setDeviceWatch] = useState({
         name: "",
         price: 0,
         img: []
     })
-    const [newLike, setNewLike] = useState(false)
-
-    console.log(deviceWatch)
 
     const hasThisId = (id) => {
-        let ger = false
-        console.log(deviceWatch)
+        let hasId = false
         device.devices.forEach(product => {
-            
-            console.log(product.id, 'product id')
-            console.log(deviceWatch.id, 'wathed id')
             if (product.id == id){
-                console.log('есть товар в корзине')
-                ger = true
+                hasId = true
             }
         });
-        console.log(ger, 'ger')
-        return ger
+        return hasId
     }
 
     const getProduct = async(id) => {
@@ -49,17 +34,14 @@ const ProductPage = observer(() => {
             await getCurrentProducts(id)
             .then(response => {
                 const res = {...response.data}
-                console.log(res)
                 setDeviceWatch(res)
                 setInBasket(hasThisId(res.id))
-                // setImg(res.img)
             })
         }
         catch(e){
             console.log(e)
         }
     }
-
 
     const addCard = () => {
         if (inBasket){
@@ -69,46 +51,12 @@ const ProductPage = observer(() => {
             device.setAddDevice(deviceWatch)
             setInBasket(true)
         }
-
     }
 
-    
     useEffect(() => {
         const productId = location.pathname.split('/')[2]
         getProduct(productId)
     }, [])
-
- const isLiked = (id) => {
-    for (let i in liked.Liked){
-        if (id == liked.Liked[i].id){
-            return true
-        }
-    }
-    return false
-}
-
-    const removeLike = () => {
-        let ger = []
-        for (let i in liked.Liked){
-            if (deviceWatch.id != liked.Liked[i].id){
-                ger.push(liked.Liked[i])
-            }
-        }
-        liked.setLiked(ger)
-        setNewLike(true)
-    }
-
-    
-    
-    const addLiked = () => {
-        liked.setAddLiked(deviceWatch)
-        setNewLike(true)
-    }
-    
-    useEffect(() => {
-        setNewLike(false)
-    }, [newLike])
-
 
     return (
         <>
@@ -124,7 +72,6 @@ const ProductPage = observer(() => {
                                     <h1 className="Product__Page-Size-Title">{deviceWatch.name}</h1>
                                     <p className="Product__Page-Size-Price">{deviceWatch.price} руб.</p>
                                 </div>
-
                             <div className="Product__Page-Size">
                                 <p className='Product__Page-Size-Choise' style={{marginRight: '20px'}}>Выберете размер</p>
                                 <p className="Product__Page-Size-List">
@@ -149,14 +96,8 @@ const ProductPage = observer(() => {
                             </div>
                             <div className="Product__Page-Size-Btn-Block">
                                 {inBasket ? <button className="Product__Page-Size-Btn" disabled = {true}>Товар в корзине</button> : <button className="Product__Page-Size-Btn" onClick={addCard}>Добавить в корзину</button> }
-                                {/* <button className="Product__Page-Size-Btn" onClick={addCard}>Добавить в корзину</button> */}
                                 <button className="Product__Page-Size-Btn">Подобрать размер</button>
-                                {isLiked(deviceWatch.id)
-                                ?
-                                <img src={ilikes} style={{cursor:'pointer', height: '40px', marginTop: '10px'}} className='svg' onClick={removeLike}/>
-                                :
-                                <img src={like} style={{cursor:'pointer', height: '35px', marginTop: '10px'}} className='svg' onClick={addLiked}/>
-                                }
+                                <LikeButton product={deviceWatch}/>
                             </div>
                             <div className="Product__Page-Info-Title">
                                 <h1 style={{borderBottom: '2px solid black', paddingLeft: '10px', paddingRight: '10px', paddingBottom: '5px', cursor:'pointer'}}>О товаре</h1>
@@ -173,7 +114,6 @@ const ProductPage = observer(() => {
               </div>
             </div>     
         </div>
-        <Footer/>
         </>
     );
 });

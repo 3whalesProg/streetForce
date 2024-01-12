@@ -1,13 +1,13 @@
 import '../Basket/Basket.scss';
 import cross from '../../static/img/cross.svg'
 import ilikes from '../../static/img/ilikes.png'
-import Footer from '../Components/footer/Footer';
 import sneakers from '../../static/img/sneakers.png'
 import serdce from '../../static/img/like.svg'
 import './Likes.scss'
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../main.jsx';
+import { Link } from 'react-router-dom';
 
 const Likes = observer(() => {
     const {liked} = useContext(Context)
@@ -33,7 +33,7 @@ const Likes = observer(() => {
         <>
         <div className='Basket__Container'>
             <div className='Basket__Title'>
-                <h1>Моя Корзина</h1>
+                <h1>Избранное</h1>
             </div>
            <div className='Basket__Wrapper' > 
                 <div className='Basket__Wrapper-Flex'>
@@ -41,15 +41,17 @@ const Likes = observer(() => {
                     {likedState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
-                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px'}}>
+                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px', width: '750px'}}>
+                            <div className="Basket__flex-item-content" style={{display: 'flex', position: 'relative'}}>
+                                <Link to = {"/product/" + item.id}>
                                 <div className='Basket__Wrapper-Flex-Card-Img'>
                                     <img src={'http://localhost:7000/' + item.img[0]} width='200' height='200' style={{padding: '20px'}}/>
                                 </div>
-
+                                </Link>
                                 <div className='Basket__Wrapper-Flex-Items'>
                                     <div className='Basket__Wrapper-Flex-Items-Title'>
                                         <h1>{item.name}</h1>
-                                        <img src={cross}  style={{marginRight: '15px', cursor:'pointer'}} onClick={() => removeCard(item.id)}/>
+                                        <img src={cross}  style={{position: 'absolute', right: '20px', cursor: "pointer"}} onClick={() => removeCard(item.id)}/>
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Text'>
@@ -58,9 +60,9 @@ const Likes = observer(() => {
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
                                         <p>{item.price} Руб.</p>
-                                        <img src={ilikes} height='20' style={{marginRight: '15px', cursor:'pointer'}} onClick={() => removeCard(item.id)}/>
                                     </div>
                                 </div>
+                            </div>
                                 
                             </div>
                         </div>                          
@@ -97,7 +99,6 @@ const Likes = observer(() => {
             } */}
            </div>
         </div>
-        <Footer/>
         </>
     );
 });

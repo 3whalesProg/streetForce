@@ -1,6 +1,5 @@
 import banner from '../../static/img/banner.png'
 import './ShopPage.scss'
-import Footer from '../Components/footer/Footer'
 import { useEffect, useState } from 'react'
 import { getProducts } from '../../http/productApi'
 import ProductList from './ProductList'
@@ -27,14 +26,11 @@ const ShopPage = () => {
     const removeSortParams = (targetValue) =>{
         for (let i in Object.keys(sortParams)){
             if (targetValue == Object.values(sortParams)[i]){
-                const gav = {...sortParams, [Object.keys(sortParams)[i]]: ""} 
-                setSortParams(gav)
+                setSortParams({...sortParams, [Object.keys(sortParams)[i]]: ""} )
                 setNewSortParams(true)
             }
         }
     }
-
-
 
     const showMore = (event) =>{
         event.preventDefault()
@@ -122,7 +118,6 @@ const ShopPage = () => {
                                         <li className="ShopPage__sortParams-item" onClick={() => {removeSortParams(item)}}>
                                             {item}
                                         </li>
-                                        
                                         </>
                                     )}
                                 })}
@@ -142,7 +137,6 @@ const ShopPage = () => {
                 </div>
             </div>
         </div>
-        <Footer/>
         </>
     );
 };
