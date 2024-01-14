@@ -1,16 +1,17 @@
 import './ProductPage.scss'
 import { observer } from "mobx-react-lite";
-import { useContext, useEffect, useState } from "react";
-import { Context } from "../../main";
+import {useEffect, useState } from "react";
 import { getCurrentProducts } from "../../http/productApi";
 import { useLocation } from "react-router-dom";
 import LikeButton from "../Components/LikeBut/LikeButton";
 import { Carousel } from 'react-bootstrap';
+import Button from '../Components/BtnAddToBasket/Button';
+// import Button from '../Components/BtnAddToBasket/Button';
+
 
 const ProductPage = observer(() => {
     const location = useLocation()
-    const {device} = useContext(Context)
-    const [inBasket, setInBasket] = useState(false)
+
     //Получаем состояние текущего товара
     const [deviceWatch, setDeviceWatch] = useState({
         name: "",
@@ -18,23 +19,12 @@ const ProductPage = observer(() => {
         img: []
     })
 
-    const hasThisId = (id) => {
-        let hasId = false
-        device.devices.forEach(product => {
-            if (product.id == id){
-                hasId = true
-            }
-        });
-        return hasId
-    }
-
     const getProduct = async(id) => {
         try{
             await getCurrentProducts(id)
             .then(response => {
                 const res = {...response.data}
                 setDeviceWatch(res)
-                setInBasket(hasThisId(res.id))
             })
         }
         catch(e){
@@ -42,20 +32,12 @@ const ProductPage = observer(() => {
         }
     }
 
-    const addCard = () => {
-        if (inBasket){
-            alert('В вашей корзине уже есть такой товар')
-        }
-        else{
-            device.setAddDevice(deviceWatch)
-            setInBasket(true)
-        }
-    }
-
     useEffect(() => {
         const productId = location.pathname.split('/')[2]
         getProduct(productId)
     }, [])
+
+  
 
     return (
         <>
@@ -134,7 +116,10 @@ const ProductPage = observer(() => {
                                 </p>
                             </div>
                             <div className="Product__Page-Size-Btn-Block">
-                                {inBasket ? <button className="Product__Page-Size-Btn" disabled = {true}>Товар в корзине</button> : <button className="Product__Page-Size-Btn" onClick={addCard}>Добавить в корзину</button> }
+                                <Button
+                                    product={deviceWatch}
+                                />
+                                {/* {inBasket ? <button className="Product__Page-Size-Btn" disabled = {true}>Товар в корзине</button> : <button className="Product__Page-Size-Btn" onClick={addCard}>Добавить в корзину</button> } */}
                                 <button className="Product__Page-Size-Btn">Подобрать размер</button>
                                 <LikeButton product={deviceWatch}/>
                             </div>

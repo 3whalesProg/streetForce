@@ -1,13 +1,11 @@
 import '../Basket/Basket.scss';
 import cross from '../../static/img/cross.svg'
-import ilikes from '../../static/img/ilikes.png'
-import sneakers from '../../static/img/sneakers.png'
-import serdce from '../../static/img/like.svg'
 import './Likes.scss'
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../main.jsx';
 import { Link } from 'react-router-dom';
+import Button from '../Components/BtnAddToBasket/Button.jsx';
 
 const Likes = observer(() => {
     const {liked} = useContext(Context)
@@ -28,7 +26,7 @@ const Likes = observer(() => {
         setLikedState(liked.Liked)
         console.log(liked._likesPr)
     }, [])
-    
+
     return (
         <>
         <div className='Basket__Container'>
@@ -50,7 +48,7 @@ const Likes = observer(() => {
                                 </Link>
                                 <div className='Basket__Wrapper-Flex-Items'>
                                     <div className='Basket__Wrapper-Flex-Items-Title'>
-                                        <h1>{item.name}</h1>
+                                        <h1 style={{maxWidth: '375px'}}>{item.name}</h1>
                                         <img src={cross}  style={{position: 'absolute', right: '20px', cursor: "pointer"}} onClick={() => removeCard(item.id)}/>
                                     </div>
 
@@ -59,7 +57,13 @@ const Likes = observer(() => {
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Price'>
-                                        <p>{item.price} Руб.</p>
+                                        <p style={{paddingTop: '10px'}}>{item.price} Руб.</p>
+                                        <div style={{marginRight: '20px'}}>
+                                            <Button
+                                                product={item}
+                                            />
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -51,7 +51,7 @@ body{
 
 .Basket__Wrapper-Flex-Items-Price{
     display: flex;
-    margin-top: 60px;
+    margin-top: 50px;
     font-family: Helvetica-light;
     font-size: 20px;
     justify-content: space-between;
@@ -66,7 +66,7 @@ body{
 
 .Basket__TypeBar{
     width: 639px;
-    height: 190px;
+    height: 201px;
     background-color: #fff;
 }
 
@@ -74,7 +74,7 @@ body{
     font-family: Helvetica-light;
     font-size: 20px;
     border-bottom: 1px solid gray;
-    
+    padding-bottom: 20px;
 }
 
 .Basket__TypeBar-Text{
@@ -86,7 +86,7 @@ body{
 .button{
     width: 100%;
     height: 50px;
-    margin-top: 20px;
+    margin-top: 32px;
     display: inline-block;
     cursor: pointer;
     border: 1px solid #fff;
@@ -124,3 +124,4 @@ body{
       }
     }
 }
+

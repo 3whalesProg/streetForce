@@ -57,7 +57,7 @@ const Basket = observer(() => {
 
                                 <div className='Basket__Wrapper-Flex-Items'>
                                     <div className='Basket__Wrapper-Flex-Items-Title'>
-                                        <h1>{item.name}</h1>
+                                        <h1 style={{maxWidth: '375px'}}>{item.name}</h1>
                                         <img src={cross} onClick={() => removeCard(item.id)}  style={{position: 'absolute', right: '20px', cursor: "pointer"}} className='svg'/>
                                     </div>
 
@@ -65,7 +65,7 @@ const Basket = observer(() => {
                                         <p>{item.description}</p>
                                     </div>
 
-                                    <div className='Basket__Wrapper-Flex-Items-Price'>
+                                    <div className='Basket__Wrapper-Flex-Items-Price' style={{paddingTop: '10px'}}>
                                         <p>{item.price} Руб.</p> 
                                         <div className="likeBut" style={{position:'absolute', right: '20px', cursor: "pointer"}}>
                                         <LikeButton product={item}/>
