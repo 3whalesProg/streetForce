@@ -1,4 +1,3 @@
-import {  Image } from "react-bootstrap";
 import './ProductPage.scss'
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
