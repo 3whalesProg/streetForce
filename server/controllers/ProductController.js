@@ -1,4 +1,6 @@
 const {Product} = require('../models/models')
+const uuid = require('uuid')
+const path = require('path')
 
 class ProductController{
     async getAll(req,res){
@@ -26,6 +28,27 @@ class ProductController{
         try{
             let {id} = req.query
             const product = await Product.findByPk(id)
+            return res.json(product)
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
+    async createProduct(req, res){
+        try{
+            let {name, price, sizes, gender, type, brand, description, features, compositions} = req.body
+            let files = req.files.files
+            let images = []
+            for (let i = 0; i < 4; i++){
+                let fileName = uuid.v4() + ".jpg"
+                files[i].mv(path.resolve(__dirname, '..', 'static', fileName))
+                images.push(fileName)
+            }
+        
+
+            const product = await Product.create({name, price, sizes, gender, type, brand, description, features: [features], compositions: [compositions], img: images})
+
             return res.json(product)
         }
         catch(e){
