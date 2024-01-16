@@ -39,11 +39,19 @@ const Product = sequelize.define('product', {
     sizes: {type: DataTypes.TEXT},
     img: {type: DataTypes.ARRAY(sequelize.Sequelize.STRING)},
     gender: {type: DataTypes.STRING},
-    type: {type: DataTypes.STRING},
-    brand: {type: DataTypes.STRING},
     description: {type: DataTypes.TEXT},
     features: {type: DataTypes.ARRAY(sequelize.Sequelize.STRING)},
     compositions: {type: DataTypes.ARRAY(sequelize.Sequelize.STRING)}
+})
+
+const Type = sequelize.define('type', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING}
+})
+
+const Brand = sequelize.define('brand', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING}
 })
 
 const Order_History = sequelize.define('order_history', {
@@ -64,7 +72,20 @@ Likes.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id'})
 User.hasOne(Order_History, {foreignKey: 'user_id', targetKey: 'id'})
 Order_History.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id'})
 
+Type.hasMany(Product)
+Product.belongsTo(Type)
 
+Brand.hasMany(Product)
+Product.belongsTo(Brand)
+
+// Product.hasOne(Brand, {foreignKey: 'id', targetKey: 'brand_id'})
+// Brand.belongsTo(Product, {foreignKey: 'id', targetKey: 'brand_id'})
+
+// Product.hasOne(Type, {foreignKey: 'type_id', targetKey: 'id'})
+// Type.belongsTo(Product, {foreignKey: 'type_id', targetKey: 'id'})
+
+// Product.hasOne(Brand, {foreignKey: 'brand_id', targetKey: 'id'})
+// Brand.belongsTo(Product, {foreignKey: 'brand_id', targetKey: 'id'})
 
 Basket.hasMany(Basket_Item, {foreignKey: 'basket_id', targetKey: 'id'})
 Basket_Item.belongsTo(Basket, {foreignKey: 'basket_id', targetKey: 'id'} )
@@ -85,5 +106,7 @@ module.exports = {
     Likes_Item,
     Product,
     Order_History,
-    Order_History_Item
+    Order_History_Item,
+    Brand,
+    Type
 }
