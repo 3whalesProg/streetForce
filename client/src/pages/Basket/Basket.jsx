@@ -35,6 +35,7 @@ const Basket = observer(() => {
         setDevicesState(device.devices)
         setSum(sumBasket(device.devices))
     }, [])
+    
 
     return (
         <>        

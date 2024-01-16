@@ -11,7 +11,6 @@ import { Context } from './main';
 
 const App = observer(() => {
     const {device} = useContext(Context)
-
   useEffect(() => {
     if(localStorage.getItem('device') !== null || localStorage.getItem('device') == '[]'){
         const basket = JSON.parse(localStorage.getItem('device'))

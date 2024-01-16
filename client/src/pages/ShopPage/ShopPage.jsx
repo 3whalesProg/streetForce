@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { getProducts } from '../../http/productApi'
 import ProductList from './ProductList'
 
+
 const ShopPage = () => {
     const [productList, setProductList] = useState([])
     const [offset, setOffset] = useState(0)
@@ -13,6 +14,7 @@ const ShopPage = () => {
         gender: "",
         sort: "",
     })
+
     const [newSortParams, setNewSortParams] = useState(false)
 
     const changeSortParams = (event) =>{
@@ -75,7 +77,7 @@ const ShopPage = () => {
             <div className="ShopPage_wrapper">
                 <div className="ShopPage__content"> 
                         <img className='ShopPage-banner' src={banner} alt=""/>
-                        <h1>ТОВАРЫ</h1>
+                        <h1 style={{wordSpacing: '10px'}}>КАТАЛОГ ТОВАРОВ</h1>
                         <div className="ShopPage__gender">
                             <div className="ShopPage__gender-list">
                                 <button name="gender" value='Man' className='ShopPage__gender-button' onClick={changeSortParams}>Мужчины</button>
@@ -132,7 +134,9 @@ const ShopPage = () => {
                         </div>
                         <div className='Shop__Page-Pagination'>
                             <button className='Shop__Page-Pagination-Button' onClick={showMore}>Больше</button>
+                            
                         </div>
+
                         <img className='ShopPage-banner' src={banner} alt="" />     
                 </div>
             </div>

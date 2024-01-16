@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './AdminPanel.scss'
 import { createNewProduct } from '../../http/productApi';
 import { addType } from '../../http/typeApi';
+import { addBrand } from '../../http/brandApi';
 
 const AdminPanel = () => {
 
@@ -13,7 +14,8 @@ const AdminPanel = () => {
         description: '',
         sizes: '',
         img: [],
-        type: ''
+        type: '',
+        brand: "",
     })
 
     const [features, setFeatures] = useState('')
@@ -25,6 +27,20 @@ const AdminPanel = () => {
             await addType(sortParams.type)
             .then(response => {
                 setSortParams({...sortParams, type: ''})
+            })
+
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
+    //Брэнды
+    const addNewBrand = async() => {
+        try{
+            await addBrand(sortParams.brand)
+            .then(response => {
+                setSortParams({...sortParams, brand: ''})
             })
 
         }
@@ -76,7 +92,7 @@ const AdminPanel = () => {
         setSortParams({...sortParams, [e.target.name]: e.target.value})
    }
 
-   const create = async(name, price, sizes, gender, type,  description, compositions, features, img) => {
+   const create = async(name, price, sizes, gender, type, brand, description, compositions, features, img) => {
     try{
         const formData = new FormData()
         formData.append('name', name)
@@ -85,6 +101,7 @@ const AdminPanel = () => {
         formData.append('gender', gender)
         formData.append('type', type)
         formData.append('description', description)
+        formData.append('brand', brand)
         formData.append('compositions', compositions)
         formData.append('features', features)
         for (let i = 0; i < 4; i++){
@@ -194,6 +211,11 @@ const AdminPanel = () => {
                     добавьте тип
                         <input onChange={(e) => {handleChangeParams(e)}} name="type" value={sortParams.type} type="text" className="Admin__Right-Input"   placeholder='Добавить тип'/>
                         <button onClick={addNewType}>клик</button>
+                </div>
+                <div className="Admin__addBrand" style={{marginTop: '50px'}}>
+                    добавьте брэнд
+                        <input onChange={(e) => {handleChangeParams(e)}} name="brand" value={sortParams.brand} type="text" className="Admin__Right-Input"   placeholder='Добавить брэнд'/>
+                        <button onClick={addNewBrand}>клик</button>
                 </div>
             </div>
         </>
