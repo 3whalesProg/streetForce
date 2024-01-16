@@ -9,45 +9,6 @@ import { Link } from 'react-router-dom';
 const Basket = observer(() => {
     const {device} = useContext(Context)
     const [devicesState, setDevicesState] = useState(device.devices)
-    const [storeState, setStoreState] = useState(JSON.parse(localStorage.getItem('device')))
-    console.log(storeState)
-
-    // const add = () => {
-    //     const gav = {
-    //         device: []
-    //     }
-    //     gav.device.push()
-        
-        
-    //     localStorage.setItem('obj', JSON.stringify(gav))
-    // }
-    
-
-    // const [dataStore, setDataStore] = useState(localStorage.getItem('dataStore'))
-    // let cardList = []
-
-    // if(dataStore !== '' && dataStore !== null){
-    //     cardList = JSON.parse(dataStore)
-    // }
-
-    // cardList.push(devicesState)
-    // localStorage.setItem('dataStore', JSON.stringify(cardList))
-    // console.log(cardList.map(card => {
-    //     return card
-    // }))
-
-
-    // const useLocalStorageList = (key, defaultValue) => {
-    //         const [state, setState] = useState(() => JSON.parse(localStorage.getItem(key) || defaultValue))
-    //         useEffect(() => {
-    //             localStorage.setItem(key, JSON.stringify(state))
-    //             console.log(state)
-    //         }, [state])
-    //         return [state, setState]
-    // }
-
-    // const [resultId, setIdResult] = useLocalStorageList('device', devicesState)
-    // console.log(resultId)
 
     const [sum, setSum] = useState(0)
      const sumBasket = (basket) => {
@@ -66,12 +27,13 @@ const Basket = observer(() => {
         setDevicesState(orders)
         device.setDevices(orders)
         setSum(sumBasket(device.devices))
+        localStorage.removeItem('device')
+        localStorage.setItem('device', JSON.stringify(orders))
     }
 
     useEffect(() => {
         setDevicesState(device.devices)
         setSum(sumBasket(device.devices))
-        setStoreState()
     }, [])
 
     return (
@@ -110,7 +72,6 @@ const Basket = observer(() => {
                                         <LikeButton product={item}/>
                                         </div>
                                     </div>
-                                    <button onClick={add}>Кликни на меня</button>
                                 </div>
                             </div>
                                 
