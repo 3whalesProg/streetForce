@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './AdminPanel.scss'
 import { createNewProduct } from '../../http/productApi';
+import { addType } from '../../http/typeApi';
 
 const AdminPanel = () => {
 
@@ -11,11 +12,27 @@ const AdminPanel = () => {
         compositions: [],
         description: '',
         sizes: '',
-        img: []
+        img: [],
+        type: ''
     })
 
     const [features, setFeatures] = useState('')
     const [composition, setComposition] = useState('')
+
+
+    const addNewType = async() => {
+        try{
+            await addType(sortParams.type)
+            .then(response => {
+                setSortParams({...sortParams, type: ''})
+            })
+
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
 
     const handleChangeFeatures = (e) => {
         setFeatures(e.target.value)
@@ -171,6 +188,12 @@ const AdminPanel = () => {
                                 })}
                             </div>
                     </div>
+                    
+                </div>
+                <div className="Admin__addType">
+                    добавьте тип
+                        <input onChange={(e) => {handleChangeParams(e)}} name="type" value={sortParams.type} type="text" className="Admin__Right-Input"   placeholder='Добавить тип'/>
+                        <button onClick={addNewType}>клик</button>
                 </div>
             </div>
         </>
