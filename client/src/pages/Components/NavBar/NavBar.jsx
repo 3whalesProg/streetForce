@@ -18,7 +18,7 @@ const NavBar = () =>{
             <NavLink to="/main" className={setIsActive}>
                         Главная
                     </NavLink>
-                    <NavLink to="/basket" className={setIsActive}>
+                    <NavLink to="/profile" className={setIsActive}>
                         Личный кабинет
                     </NavLink>
                     <NavLink to="/shop" className={setIsActive}>

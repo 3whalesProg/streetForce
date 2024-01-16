@@ -6,8 +6,6 @@ import { useLocation } from "react-router-dom";
 import LikeButton from "../Components/LikeBut/LikeButton";
 import { Carousel } from 'react-bootstrap';
 import Button from '../Components/BtnAddToBasket/Button';
-// import Button from '../Components/BtnAddToBasket/Button';
-
 
 const ProductPage = observer(() => {
     const location = useLocation()
@@ -36,6 +34,7 @@ const ProductPage = observer(() => {
         const productId = location.pathname.split('/')[2]
         getProduct(productId)
     }, [])
+
 
   
 

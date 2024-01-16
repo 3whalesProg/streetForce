@@ -9,6 +9,21 @@ const Button = observer(({product}) => {
     const {device} = useContext(Context)
     const [inBasket, setInBasket] = useState(false)
 
+    const addCardToLocalStorage = (product) => {
+
+            if(localStorage.getItem('device') == null){
+
+                localStorage.setItem('device', JSON.stringify([product]))
+
+            } else{
+                let ger = []
+                ger = JSON.parse(localStorage.getItem('device')); 
+                console.log(ger, 'ger')
+                ger.push(product)
+                localStorage.setItem('device', JSON.stringify(ger))
+            }
+           
+    }
 
     const hasThisId = (id) => {
         let hasId = false
@@ -27,8 +42,10 @@ const Button = observer(({product}) => {
         else{
             device.setAddDevice(product)
             setInBasket(true)
+            addCardToLocalStorage(product)
         }
-    }
+    }   
+
 
     useEffect(() => {
             setInBasket(false)
@@ -46,3 +63,8 @@ const Button = observer(({product}) => {
 });
 
 export default Button;
+
+    //Basket
+
+//const [storeState, setStoreState] = useState(JSON.parse(localStorage.getItem('device')))
+// console.log(storeState)

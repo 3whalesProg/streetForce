@@ -40,9 +40,9 @@ const LikeButton = ({product}) => { //input product {name: "", price: 0, img: []
     return(
     <>
     {isLiked(product.id) ?
-                    <img src={ilikes} alt="" srcset="" className="ShopPage__like" onClick={() => {removeLike(product)}}/>
+                    <img src={ilikes} alt="" className="ShopPage__like" onClick={() => {removeLike(product)}}/>
                     : 
-                    <img src={like} alt="" srcset="" className="ShopPage__like" onClick={() => {addLike(product)}} />
+                    <img src={like} alt="" className="ShopPage__like" onClick={() => {addLike(product)}} />
     }
     </>
     )
