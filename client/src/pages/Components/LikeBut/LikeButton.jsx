@@ -12,6 +12,17 @@ const LikeButton = ({product}) => { //input product {name: "", price: 0, img: []
     const addLike = (product) => {
         liked.setAddLiked(product)
         setNewLike(true)
+
+        if(localStorage.getItem('likes') == null){
+            localStorage.setItem('likes', JSON.stringify([product]))
+
+        } else{
+            let ger = []
+            ger = JSON.parse(localStorage.getItem('likes')); 
+            console.log(ger, 'ger')
+            ger.push(product)
+            localStorage.setItem('likes', JSON.stringify(ger))
+        }
     }
 
     const removeLike = (product) => {
@@ -22,6 +33,8 @@ const LikeButton = ({product}) => { //input product {name: "", price: 0, img: []
             }
         }
         liked.setLiked(ger)
+        localStorage.removeItem('likes')
+        localStorage.setItem('likes', JSON.stringify(ger))
         setNewLike(true)
     }
 

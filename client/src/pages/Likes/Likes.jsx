@@ -18,8 +18,11 @@ const Likes = observer(() => {
                 orders.push(item)
             }
         })
+
         setLikedState(orders)
         liked.setLiked(orders)
+        localStorage.removeItem('likes')
+        localStorage.setItem('likes', JSON.stringify(orders))
     }
 
     useEffect(() => {
