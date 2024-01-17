@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './AdminPanel.scss'
 import { createNewProduct } from '../../http/productApi';
 import { addType, getType } from '../../http/typeApi';
-import { addBrand } from '../../http/brandApi';
+import { addBrand, getBrand } from '../../http/brandApi';
 
 const AdminPanel = () => {
 
@@ -15,6 +15,8 @@ const AdminPanel = () => {
         sizes: '',
         img: [],
         typeId: 0,
+        brandId: 0,
+        gender: '',
         brand: "",
         type: ''
     })
@@ -22,6 +24,7 @@ const AdminPanel = () => {
     const [features, setFeatures] = useState('')
     const [composition, setComposition] = useState('')
     const [types, setTypes] = useState([])
+    const [brands, setBrands] = useState([])
 
 
     const addNewType = async() => {
@@ -64,6 +67,18 @@ const AdminPanel = () => {
         }
     }
 
+    const getAllBrand = async() => {
+        try{
+            await getBrand()
+            .then(response => {
+                setBrands(response.data)
+            })
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
 
     const handleChangeFeatures = (e) => {
         setFeatures(e.target.value)
@@ -99,13 +114,15 @@ const AdminPanel = () => {
         console.log(sortParams)
    }
 
-   const create = async(name, price, sizes, typeId, description, compositions, features, img) => {
+   const create = async(name, price, sizes, typeId, brandId, gender, description, compositions, features, img) => {
     try{
         const formData = new FormData()
         formData.append('name', name)
         formData.append('price', price)
         formData.append('sizes', sizes)
         formData.append('typeId', typeId)
+        formData.append('brandId', brandId)
+        formData.append('gender', gender)
         formData.append('description', description)
         formData.append('compositions', compositions)
         formData.append('features', features)
@@ -120,6 +137,7 @@ const AdminPanel = () => {
 
     useEffect(()=>{
         getAllTypes()
+        getAllBrand()
     },[])
 
     return (
@@ -155,6 +173,21 @@ const AdminPanel = () => {
                                             )
                                         })}
                             </select>
+                            <select name="brandId" className='ShopPage__sort-input' onChange={handleChangeParams}>
+                                    <option name="brandId" disabled selected>Бренд</option>
+                                    {brands.map((brand) => {
+                                            return(
+                                                <option name="brandId" value={brand.id}>{brand.name}</option>
+                                            )
+                                        })}
+                            </select>
+
+                            <select name="gender" className='ShopPage__sort-input' onChange={handleChangeParams}>
+                                    <option name="gender" disabled selected>Пол</option>
+                                    <option name="gender" value='Мужчины'>Мужчины</option>
+                                    <option name="gender" value='Женщины'>Женщины</option>
+                                    <option name="gender" value='Унисекс'>Унисекс</option>
+                            </select>
                         </div>
                     </div>
 
@@ -177,7 +210,7 @@ const AdminPanel = () => {
                             </div> */}
                             <input onChange={(e) => { handleChangeParams(e)}}  value={sortParams.description} name="description" type='text' className="Admin__Center-Panel-Up-Block" placeholder='Описание товара...'/>
                         <div style={{textAlign: 'center'}}>
-                            <button className="Admin__Center-Button" onClick={() => {create(sortParams.name, sortParams.price, sortParams.sizes, sortParams.typeId,  sortParams.description, sortParams.compositions, sortParams.features, sortParams.img)}}>
+                            <button className="Admin__Center-Button" onClick={() => {create(sortParams.name, sortParams.price, sortParams.sizes, sortParams.typeId, sortParams.brandId, sortParams.gender,  sortParams.description, sortParams.compositions, sortParams.features, sortParams.img)}}>
                                 Добавить товар
                             </button>
                         </div>
