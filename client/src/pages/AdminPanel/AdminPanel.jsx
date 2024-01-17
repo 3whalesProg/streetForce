@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './AdminPanel.scss'
 import { createNewProduct } from '../../http/productApi';
-import { addType } from '../../http/typeApi';
+import { addType, getType } from '../../http/typeApi';
 import { addBrand } from '../../http/brandApi';
 
 const AdminPanel = () => {
@@ -14,19 +14,21 @@ const AdminPanel = () => {
         description: '',
         sizes: '',
         img: [],
-        type: '',
+        typeId: 0,
         brand: "",
+        type: ''
     })
 
     const [features, setFeatures] = useState('')
     const [composition, setComposition] = useState('')
+    const [types, setTypes] = useState([])
 
 
     const addNewType = async() => {
         try{
             await addType(sortParams.type)
             .then(response => {
-                setSortParams({...sortParams, type: ''})
+                
             })
 
         }
@@ -43,6 +45,19 @@ const AdminPanel = () => {
                 setSortParams({...sortParams, brand: ''})
             })
 
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
+    const getAllTypes = async() => {
+        try{
+            await getType()
+            .then(response => {
+                console.log(response.data)
+                setTypes(response.data)
+            })
         }
         catch(e){
             console.log(e)
@@ -79,29 +94,19 @@ const AdminPanel = () => {
         setComposition('')
     }
 
-
-    const changeSortParams = (event) =>{
-        console.log(sortParams)
-        setSortParams({
-            ...sortParams, [event.target.name]: event.target.value
-        })
-        
-    }
-
    const  handleChangeParams = (e) => {
         setSortParams({...sortParams, [e.target.name]: e.target.value})
+        console.log(sortParams)
    }
 
-   const create = async(name, price, sizes, gender, type, brand, description, compositions, features, img) => {
+   const create = async(name, price, sizes, typeId, description, compositions, features, img) => {
     try{
         const formData = new FormData()
         formData.append('name', name)
         formData.append('price', price)
         formData.append('sizes', sizes)
-        formData.append('gender', gender)
-        formData.append('type', type)
+        formData.append('typeId', typeId)
         formData.append('description', description)
-        formData.append('brand', brand)
         formData.append('compositions', compositions)
         formData.append('features', features)
         for (let i = 0; i < 4; i++){
@@ -111,8 +116,11 @@ const AdminPanel = () => {
     }
     catch(e){
         console.log(e)
-    }
-}
+    }}
+
+    useEffect(()=>{
+        getAllTypes()
+    },[])
 
     return (
         <>
@@ -138,6 +146,15 @@ const AdminPanel = () => {
                             <input onChange={(e) => { handleChangeParams(e)}}  value={sortParams.price} name='price' className="Admin__Center-Input" placeholder='Цена товара'/>
                             размеры
                             <input onChange={(e) => { handleChangeParams(e)}}  value={sortParams.sizes} name='sizes' className="Admin__Center-Input" placeholder='имеющиеся размеры'/>
+
+                            <select name="typeId" className='ShopPage__sort-input' onChange={handleChangeParams}>
+                                        <option name="typeId" disabled selected>Тип одежды</option>
+                                        {types.map((type) => {
+                                            return(
+                                                <option name="typeId" value={type.id}>{type.name}</option>
+                                            )
+                                        })}
+                            </select>
                         </div>
                     </div>
 
@@ -160,7 +177,7 @@ const AdminPanel = () => {
                             </div> */}
                             <input onChange={(e) => { handleChangeParams(e)}}  value={sortParams.description} name="description" type='text' className="Admin__Center-Panel-Up-Block" placeholder='Описание товара...'/>
                         <div style={{textAlign: 'center'}}>
-                            <button className="Admin__Center-Button" onClick={() => {create(sortParams.name, sortParams.price, sortParams.sizes, sortParams.gender, sortParams.type,  sortParams.description, sortParams.compositions, sortParams.features, sortParams.img)}}>
+                            <button className="Admin__Center-Button" onClick={() => {create(sortParams.name, sortParams.price, sortParams.sizes, sortParams.typeId,  sortParams.description, sortParams.compositions, sortParams.features, sortParams.img)}}>
                                 Добавить товар
                             </button>
                         </div>

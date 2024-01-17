@@ -3,14 +3,16 @@ import './ShopPage.scss'
 import { useEffect, useState } from 'react'
 import { getProducts } from '../../http/productApi'
 import ProductList from './ProductList'
+import { getType } from '../../http/typeApi'
 
 
 const ShopPage = () => {
     const [productList, setProductList] = useState([])
     const [offset, setOffset] = useState(0)
+    const [types, setTypes] = useState([])
     const [sortParams, setSortParams] = useState({
         brand: "",
-        type: "",
+        typeId: "",
         gender: "",
         sort: "",
     })
@@ -23,6 +25,19 @@ const ShopPage = () => {
             ...sortParams, [event.target.name]: event.target.value
         })
         
+    }
+
+    const getAllTypes = async() => {
+        try{
+            await getType()
+            .then(response => {
+                console.log(response.data)
+                setTypes(response.data)
+            })
+        }
+        catch(e){
+            console.log(e)
+        }
     }
 
     const removeSortParams = (targetValue) =>{
@@ -42,7 +57,7 @@ const ShopPage = () => {
 
     const getProductList = async(offset) => {
         try{
-            await getProducts(offset, sortParams.type, sortParams.brand, sortParams.gender)
+            await getProducts(offset, sortParams.typeId, sortParams.brand, sortParams.gender)
             .then(response => {
                 const res = response.data.rows
                 if (newSortParams){
@@ -62,6 +77,7 @@ const ShopPage = () => {
 
 
     useEffect(() =>{
+        getAllTypes()
         getProductList(0, sortParams.type)
         setOffset(2)
     }, [])
@@ -94,11 +110,13 @@ const ShopPage = () => {
                                     </select>
                                 </li>
                                 <li className="ShopPage__sort-item">
-                                    <select name="type" className='ShopPage__sort-input' onChange={changeSortParams}>
-                                        <option name="type" disabled selected>Тип одежды</option>
-                                        <option name="type" value="sneakers">Кросы</option>
-                                        <option name="type" value="Sweater">Толстовки</option>
-                                        <option name="type">Рубашки</option> {/*Подтянуть с базы данных */}
+                                    <select name="typeId" className='ShopPage__sort-input' onChange={changeSortParams}>
+                                            <option name="typeId" disabled selected>Тип одежды</option>
+                                            {types.map((type) => {
+                                                return(
+                                                    <option name="typeId" value={type.id}>{type.name}</option>
+                                                )
+                                            })}
                                     </select>
                                 </li>
                                 <li className="ShopPage__sort-item">

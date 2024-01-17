@@ -5,3 +5,8 @@ export const addType = async(type) => {
     const {data} = await $host.post("api/type/addType", {type})
     return {data}
 }
+
+export const getType = async() =>{
+    const {data} = await $host.get("api/type/getType")
+    return {data}
+}

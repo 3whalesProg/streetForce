@@ -1,8 +1,9 @@
 import { $host } from "./index";
 
 
-export const getProducts = async(offset, type, brand, gender) => {
-    const {data} = await $host.get('api/product/getProductList?offset=' + offset + '&type=' + type + '&brand=' + brand + '&gender=' + gender)
+export const getProducts = async(offset, typeId, brand, gender) => {
+    
+    const {data} = await $host.get('api/product/getProductList?offset=' + offset + '&typeId=' + typeId + '&brand=' + brand + '&gender=' + gender)
     return {data}
 }
 
@@ -12,6 +13,7 @@ export const getCurrentProducts = async(id) => {
 }
 
 export const createNewProduct = async(product) => {
+    console.log(product)
     const {data} = await $host.post('api/product/createProduct', product)
     return {data}
 }
