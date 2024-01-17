@@ -108,7 +108,7 @@ const ShopPage = () => {
             <div className="ShopPage_wrapper">
                 <div className="ShopPage__content"> 
                         <img className='ShopPage-banner' src={banner} alt=""/>
-                        <h1 style={{wordSpacing: '10px'}}>КАТАЛОГ ТОВАРОВ</h1>
+                        <h1 className='catalog__title'>Каталог товаров</h1>
                         <div className="ShopPage__gender">
                             <div className="ShopPage__gender-list">
                                 <button name="gender" value='Мужчины' className='ShopPage__gender-button' onClick={changeSortParams}>Мужчины</button>

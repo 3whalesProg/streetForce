@@ -36,7 +36,7 @@ const NavBar = () =>{
                         Корзина
                     </NavLink>
                     <NavLink to="/likes" className={setIsActive}>
-                        Избранные
+                        Избранное
                     </NavLink>
                 </div>
             </div>

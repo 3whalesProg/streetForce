@@ -1,8 +1,11 @@
 
+
 body{
-    font-family:  Helvetica-light;
-    background-color: #f9f9f9;
+  font-family:  Helvetica-light;
+  background-color: #f9f9f9;
+  letter-spacing: 1px;
 }
+
 
 .Profile__Container{
     max-width: 1350px;
@@ -11,123 +14,126 @@ body{
     font-family: Helvetica-Regular;
 }
 
-.Profile__Btn{
-    width: 200px;
-    height: 50px;
-    margin-top: 32px;
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid #fff;
-    color: #000000;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: .15rem;
-    transition: all .3s;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      background-color: #fff;
-      z-index: -2;
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0%;
-      height: 100%;
-      background-color: darken(#F2F2F2, 15%);
-      transition: all .3s;
-      z-index: -1;
-    }
-    &:hover {
-      color: #fff;
-      &:before {
-        width: 100%;
-      }
-    }
-}
-
-.Profile__Navigation{
-    display: flex;
-    justify-content: center;
-    gap: 44px;
-}
-
 .Profile__Title{
-  margin: 20px 0px 30px 0px;
-  font-family: Helvetica-Regular;
-  font-size: 28px;
-  letter-spacing: 3px;
+  margin-top: 20px;
+  font-size: 30px;
+  margin-bottom: 30px;
 }
 
-.Profile__Left-Card{
+.Profile__Info{
   display: flex;
-  margin-bottom: 55px;
-  flex-direction: column;
-  gap: 55px;
 }
 
-.Profile_Left-Input{
-    width: 350px;
-    height: 35px;
-    padding: 25px;
-    border: 1px solid #D9D9D9;
-    outline: none;
-    margin-left: 100px;
+.Profile__Left-Block{
+  border: 1px solid #D9D9D9;
+  padding: 30px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-family:  Helvetica-light;
+  height: 180px;
+  background-color: #fff;
 }
-.Profile__Left-Info{
-  display: flex;
+
+.Profile__Navigate-Panel{
+  padding-bottom: 30px;
+}
+.Profile__Left-Wrapper{
+  margin-right: 30px;
+  border: 1px solid #D9D9D9;
+  padding: 30px;
+  height: 170px;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.Profile__Right-Block{
+  margin-left: 100px;
+}
+
+.Profile__Right-Title{
+  font-size: 25px;
   margin-bottom: 20px;
 }
 
-.Profile__Wrapper{
-  margin-left: 50px;
-  margin-top: 50px;
+.Profile__Right-Items{
+  display: grid;
+  grid-template-columns: 200px 100px ;
+  grid-template-rows: 100px 100px;
+  grid-column-gap:170px;
 }
-
-.Profile__Left-Info{
-  display: flex;
-  gap: 55px;
-}
-
-.Profile__Left-Gender{
-  display: flex;
-  gap: 15px;
-}
-
-.Profile__main{
-  display: flex;
-  gap: 100px;
-}
-
-.Profile__Right-Info{
-  display: flex;
-  // gap: 55px;
-}
-
-.Profile__Right-Card{
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-}
-
-.Profile__Right-Card-Inp{
-  display: flex;
-  flex-direction: column;
-  gap: 55px;
-}
-
-.Profile_Right-Input{
+.input{
+  margin-bottom: 20px;
+  margin-right: 20px;
   width: 350px;
-  height: 35px;
-  padding: 25px;
+  height: 50px;
   border: 1px solid #D9D9D9;
   outline: none;
-  margin-left: 100px;
+  border-radius: 20px;
+  padding-left: 10px;
 }
+
+.Profile__Right-Block{
+  border: 1px solid #D9D9D9;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-family:  Helvetica-light;
+  width: 780px;
+}
+
+.button{
+  width: 102px;
+  height: 47px;
+  border-radius: 10px;
+border-radius: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #fff;
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: .15rem;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: -2;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: darken(#F2F2F2, 15%);
+    transition: all .3s;
+    z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    border: 1px solid #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+.Profile__Right-Block-Down{
+  width: 780px;
+  border: 1px solid #D9D9D9;
+  border-radius: 20px;
+  margin-left: 306px;
+  padding: 30px;
+  margin-top: 30px;
+  background-color: #fff;
+}
+
+
