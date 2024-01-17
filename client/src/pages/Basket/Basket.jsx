@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 const Basket = observer(() => {
     const {device} = useContext(Context)
     const [devicesState, setDevicesState] = useState(device.devices)
+    const [storeState, setStoreState] = useState(JSON.parse(localStorage.getItem('device')))
+    console.log(storeState)
 
     const [sum, setSum] = useState(0)
      const sumBasket = (basket) => {
@@ -21,19 +23,21 @@ const Basket = observer(() => {
    
     const removeCard = (id) => {
         let orders  = []
-        devicesState.map(item => {
+        storeState.map(item => {
             if (item.id != id){orders.push(item)}
         })
-        setDevicesState(orders)
         device.setDevices(orders)
+        setStoreState(orders)
         setSum(sumBasket(device.devices))
         localStorage.removeItem('device')
         localStorage.setItem('device', JSON.stringify(orders))
+        console.log(devicesState)
     }
 
     useEffect(() => {
         setDevicesState(device.devices)
-        setSum(sumBasket(device.devices))
+        setStoreState(JSON.parse(localStorage.getItem('device')))
+        setSum(sumBasket(JSON.parse(localStorage.getItem('device'))))
     }, [])
     
 
@@ -46,7 +50,7 @@ const Basket = observer(() => {
            <div className='Basket__Wrapper' > 
                 <div className='Basket__Wrapper-Flex'>
                     {                   
-                    devicesState.map(item => 
+                    storeState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
                         <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white',marginBottom: '20px', width: '750px'}}>
@@ -82,7 +86,7 @@ const Basket = observer(() => {
                         )}
                 </div>
                         {
-                            device.devices.length !== 0
+                            storeState.length !== 0
                             ?
                             <div className='Basket__TypeBar'>
                             <div style={{padding: '15px'}}>
