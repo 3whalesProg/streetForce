@@ -89,7 +89,7 @@ const Basket = observer(() => {
                             storeState.length !== 0
                             ?
                             <div className='Basket__TypeBar' style={{borderRadius: '20px'}}>
-                            <div style={{padding: '35px', fontSize: '30px'}}>
+                            <div style={{padding: '35px'}}>
                             <div className='Basket__TypeBar-Title'>
                                 <h1>Всего к оплате: {sum} руб. </h1>
                             </div>
