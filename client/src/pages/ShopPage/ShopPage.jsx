@@ -4,14 +4,16 @@ import { useEffect, useState } from 'react'
 import { getProducts } from '../../http/productApi'
 import ProductList from './ProductList'
 import { getType } from '../../http/typeApi'
+import { getBrand } from '../../http/brandApi'
 
 
 const ShopPage = () => {
     const [productList, setProductList] = useState([])
     const [offset, setOffset] = useState(0)
     const [types, setTypes] = useState([])
+    const [brands, setBrands] = useState([])
     const [sortParams, setSortParams] = useState({
-        brand: "",
+        brandId: "",
         typeId: "",
         gender: "",
         sort: "",
@@ -40,6 +42,18 @@ const ShopPage = () => {
         }
     }
 
+    const getAllBrand = async() => {
+        try{
+            await getBrand()
+            .then(response => {
+                setBrands(response.data)
+            })
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
     const removeSortParams = (targetValue) =>{
         for (let i in Object.keys(sortParams)){
             if (targetValue == Object.values(sortParams)[i]){
@@ -51,13 +65,13 @@ const ShopPage = () => {
 
     const showMore = (event) =>{
         event.preventDefault()
-        setOffset(offset + 2)
-        getProductList(offset + 2)
+        setOffset(offset + 8)
+        getProductList(offset + 8)
     }
 
     const getProductList = async(offset) => {
         try{
-            await getProducts(offset, sortParams.typeId, sortParams.brand, sortParams.gender)
+            await getProducts(offset, sortParams.typeId, sortParams.brandId, sortParams.gender)
             .then(response => {
                 const res = response.data.rows
                 if (newSortParams){
@@ -78,8 +92,9 @@ const ShopPage = () => {
 
     useEffect(() =>{
         getAllTypes()
+        getAllBrand()
         getProductList(0, sortParams.type)
-        setOffset(2)
+        setOffset(8)
     }, [])
 
     useEffect(() =>{
@@ -96,19 +111,19 @@ const ShopPage = () => {
                         <h1 style={{wordSpacing: '10px'}}>КАТАЛОГ ТОВАРОВ</h1>
                         <div className="ShopPage__gender">
                             <div className="ShopPage__gender-list">
-                                <button name="gender" value='Man' className='ShopPage__gender-button' onClick={changeSortParams}>Мужчины</button>
-                                <button name="gender" value = "Woman" className='ShopPage__gender-button' onClick={changeSortParams}>Женщины</button>
+                                <button name="gender" value='Мужчины' className='ShopPage__gender-button' onClick={changeSortParams}>Мужчины</button>
+                                <button name="gender" value = "Женщины" className='ShopPage__gender-button' onClick={changeSortParams}>Женщины</button>
                             </div>
                         </div>
                         <div className="ShopPage__sort">
                             <ul className="ShopPage__sort-list">
-                                <li className="ShopPage__sort-item">
+                                {/* <li className="ShopPage__sort-item">
                                     <select name="sort" className='ShopPage__sort-input'>
                                             <option name="sort" disabled selected>Сортировка</option>
                                             <option name="sort">По цене от минимальной</option>
                                             <option name="sort">По цене от максимальной</option>
                                     </select>
-                                </li>
+                                </li> */}
                                 <li className="ShopPage__sort-item">
                                     <select name="typeId" className='ShopPage__sort-input' onChange={changeSortParams}>
                                             <option name="typeId" disabled selected>Тип одежды</option>
@@ -120,11 +135,13 @@ const ShopPage = () => {
                                     </select>
                                 </li>
                                 <li className="ShopPage__sort-item">
-                                    <select name="brand" className='ShopPage__sort-input' onChange={changeSortParams}>
-                                        <option name="brand" disabled selected>Бренд</option>
-                                        <option name="brand" value="Nike">Nike</option>
-                                        <option name="brand">Puma</option>
-                                        <option name="brand">StreetForce</option> {/*Подтянуть с базы данных */}
+                                    <select name="brandId" className='ShopPage__sort-input' onChange={changeSortParams}>
+                                        <option name="brandId" disabled selected>Бренд</option>
+                                        {brands.map((brand) => {
+                                                return(
+                                                    <option name="brandId" value={brand.id}>{brand.name}</option>
+                                                )
+                                            })}
                                     </select>
                                 </li>
                             </ul>

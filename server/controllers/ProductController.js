@@ -5,7 +5,7 @@ const path = require('path')
 class ProductController{
     async getAll(req,res){
         try{
-            let {offset, typeId, brand, gender} = req.query
+            let {offset, typeId, brandId, gender} = req.query
             const newQuery = {}
             for (let i in Object.keys(req.query)){
                 if (i != 0){
@@ -15,7 +15,7 @@ class ProductController{
                 }
             }
             console.log(newQuery)
-                const products = await Product.findAndCountAll({where: newQuery,offset: offset, limit: 2})
+                const products = await Product.findAndCountAll({where: newQuery,offset: offset, limit: 8})
                 return res.json(products)
         }
         catch(e){
@@ -37,7 +37,7 @@ class ProductController{
 
     async createProduct(req, res){
         try{
-            let {name, price, sizes, gender, typeId, brand, description, features, compositions} = req.body
+            let {name, price, sizes, gender, typeId, brandId, description, features, compositions} = req.body
             let files = req.files.files
             let images = []
             for (let i = 0; i < 4; i++){
@@ -47,7 +47,7 @@ class ProductController{
             }
         
 
-            const product = await Product.create({name, price, sizes, gender, typeId, brand, description, features: [features], compositions: [compositions], img: images})
+            const product = await Product.create({name, price, sizes, gender, typeId, brandId, description, features: [features], compositions: [compositions], img: images})
 
             return res.json(product)
         }
