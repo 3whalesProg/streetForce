@@ -49,7 +49,7 @@ const ProductPage = observer(() => {
                 <img
                  style={{borderRadius: '15px'}}
                  src={'http://localhost:7000/' + deviceWatch.img[0]}
-                 alt='Bmw'
+                 alt='StreetForce'
                  height='400'
                  width='400'
                 />
@@ -59,7 +59,7 @@ const ProductPage = observer(() => {
                 <img
                 style={{borderRadius: '15px'}}
                 src={'http://localhost:7000/' + deviceWatch.img[1]}
-                 alt='Bmw'
+                 alt='StreetForce'
                  height='400'
                  width='400'
                 />
@@ -69,7 +69,7 @@ const ProductPage = observer(() => {
                 <img
                 style={{borderRadius: '15px'}}
                 src={'http://localhost:7000/' + deviceWatch.img[2]}
-                 alt='Bmw'
+                 alt='StreetForce'
                  height='400'
                  width='400'
                 />
@@ -79,7 +79,7 @@ const ProductPage = observer(() => {
                 <img
                 style={{borderRadius: '15px'}}
                 src={'http://localhost:7000/' + deviceWatch.img[3]}
-                 alt='Bmw'
+                 alt='StreetForce'
                  height='400'
                  width='400'
                 />

@@ -5,12 +5,12 @@ import { Context } from '../../main.jsx';
 import { observer } from 'mobx-react-lite';
 import LikeButton from '../Components/LikeBut/LikeButton.jsx';
 import { Link } from 'react-router-dom';
+import banerTwo from '../../static/img/banerTwo.jpg'
 
 const Basket = observer(() => {
     const {device} = useContext(Context)
     const [devicesState, setDevicesState] = useState(device.devices)
     const [storeState, setStoreState] = useState(JSON.parse(localStorage.getItem('device')))
-    console.log(storeState)
 
     const [sum, setSum] = useState(0)
      const sumBasket = (basket) => {
@@ -53,7 +53,7 @@ const Basket = observer(() => {
                     storeState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
-                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white',marginBottom: '20px', width: '750px'}}>
+                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white',marginBottom: '20px', width: '750px', borderRadius: '20px'}}>
                             <div className="Basket__flex-item-content" style={{display: 'flex', position: 'relative'}}>
                                 <Link to = {"/product/" + item.id}>
                                 <div className='Basket__Wrapper-Flex-Card-Img'>
@@ -88,8 +88,8 @@ const Basket = observer(() => {
                         {
                             storeState.length !== 0
                             ?
-                            <div className='Basket__TypeBar'>
-                            <div style={{padding: '15px'}}>
+                            <div className='Basket__TypeBar' style={{borderRadius: '20px'}}>
+                            <div style={{padding: '35px', fontSize: '30px'}}>
                             <div className='Basket__TypeBar-Title'>
                                 <h1>Всего к оплате: {sum} руб. </h1>
                             </div>
@@ -99,7 +99,10 @@ const Basket = observer(() => {
                             </div>
         
                             <div className='Basket__TypeBar-Button'>
-                                <button className='button'>Оформить заказ</button>
+                                <button className='button' style={{borderRadius: '#fff'}}>Оформить заказ</button>
+                            </div>
+                            <div>
+                                <img src={banerTwo} height='300' width='500' style={{borderRadius: '20px'}}/>
                             </div>
                             </div>
                             

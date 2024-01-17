@@ -47,7 +47,7 @@ const Likes = observer(() => {
                     {storeState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
-                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px', width: '750px'}}>
+                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px', width: '750px', borderRadius: '20px'}}>
                             <div className="Basket__flex-item-content" style={{display: 'flex', position: 'relative'}}>
                                 <Link to = {"/product/" + item.id}>
                                 <div className='Basket__Wrapper-Flex-Card-Img'>
