@@ -10,7 +10,7 @@ const Profile = () => {
                 <Link to='/likes'><button className="Profile__Btn">Избранное</button></Link>
             </div>
             <div className="Profile__Title">
-                <h1>Личный кабинет</h1>
+                <h1>Профиль</h1>
             </div>
         <div className='Profile__main'> 
             <div className='Profile__Wrapper'>

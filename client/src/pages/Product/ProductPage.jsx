@@ -43,7 +43,7 @@ const ProductPage = observer(() => {
         <div className="Product__Page-Container">
             <div className="Product__Page-Wrapper">
               <div className="Product__Page-Info">
-                <div className="Product__Page-Slider" style={{width: '400px', marginRight: '55px',marginLeft: '25px', borderRadius: '15px', height: '400px'}}>
+                <div className="Product__Page-Slider" style={{width: '400px', marginRight: '55px',marginLeft: '70px', borderRadius: '15px', height: '400px'}}>
                 <Carousel style={{borderRadius: '15px'}}>
         <Carousel.Item>
                 <img

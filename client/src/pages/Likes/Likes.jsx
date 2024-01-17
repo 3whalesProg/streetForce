@@ -9,25 +9,26 @@ import Button from '../Components/BtnAddToBasket/Button.jsx';
 
 const Likes = observer(() => {
     const {liked} = useContext(Context)
-    const [likedState, setLikedState] = useState([])
+    const [likedState, setLikedState] = useState(liked.Liked)
+    const [storeState, setStoreState] = useState(JSON.parse(localStorage.getItem('likes')))
     
     const removeCard = (id) => {
         let orders  = []
-        likedState.map(item => {
+        storeState.map(item => {
             if (item.id != id){
                 orders.push(item)
             }
         })
-
-        setLikedState(orders)
         liked.setLiked(orders)
+        setStoreState(orders)
         localStorage.removeItem('likes')
         localStorage.setItem('likes', JSON.stringify(orders))
+        console.log(likedState)
     }
 
     useEffect(() => {
         setLikedState(liked.Liked)
-        console.log(liked._likesPr)
+        setStoreState(JSON.parse(localStorage.getItem('likes')))
     }, [])
 
     return (
@@ -36,10 +37,14 @@ const Likes = observer(() => {
             <div className='Basket__Title'>
                 <h1>Избранное</h1>
             </div>
-           <div className='Basket__Wrapper' > 
+            
+                <div className='Basket__Wrapper' > 
+                {
+                storeState.length !== 0
+                ?
                 <div className='Basket__Wrapper-Flex'>
                     
-                    {likedState.map(item => 
+                    {storeState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
                         <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px', width: '750px'}}>
@@ -76,36 +81,15 @@ const Likes = observer(() => {
                         </>
                         )}
                 </div>
-
-
-            {/* {likedState.length !== 0
-                ?
-                <div className='Likes__TypeBar'>
-                {likes.map(li => 
-                    <>
-                        <div className='Likes__TypeBar-Card'>
-                            <div>
-                                <img src={sneakers}/>
-                            </div>
-                            
-                            <div className='Likes__TypeBar-Card-Info'>
-                                <h1 className='Likes__Price'>{li.price} руб.</h1>
-                                <p className='Likes__Name'>{li.name}</p>
-                                <p className='Likes__Text'>В избранное</p>
-                                <img src={serdce} height='26' style={{marginTop:'10px'}}/>
-                            </div>
-                            
-                        </div>
-                    </>
-                )}
+           
+                    :
+                    <div style={{margin: '0 auto', marginTop: '250px', fontSize: '26px'}}>
+                        У вас пока что нет избранных!
+                    </div>
+                    }
+                    </div>
+          
                 </div>
-                :
-                <div style={{margin: '0 auto', marginTop: '250px', fontSize: '26px'}}>
-                У вас пока что нет избранных!
-            </div>
-            } */}
-           </div>
-        </div>
         </>
     );
 });

@@ -1,10 +1,11 @@
 @import 'src/colors.scss';
 
 .NavBar{
-    position: fixed;
+    position: sticky;
     display: flex;
     align-items: center;
     top: 0;
+    margin-right: -15px;
     min-width: 100%;
     background-color: $backgroundColor;
     height: 60px;
@@ -22,11 +23,12 @@
     display: flex;
     justify-content: space-between;
     margin: auto;
-    margin-left: 75px;
-    width: 100%;
+    // margin-left: 75px;
+    width: 90%;
     height: 60px;
     padding: 0px 20px 0px 20px;
     background-color: $backgroundColor;
+    border-bottom: 1px solid gray;
 }
 .NavBar__content-rightSide{
     display: flex;

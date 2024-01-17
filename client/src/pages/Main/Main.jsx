@@ -16,7 +16,7 @@ const Main = () => {
                 <div className="Main__Container">
                     <div className="Main__title">
                         <div className='Main__title-up'>
-                            <h1 className='Main__title-head' style={{textTransform: 'uppercase'}}>StreetForce</h1>
+                            <h1 className='Main__title-head' style={{textTransform: 'uppercase'}}>Street Force</h1>
                             <p className='Main__title-text'>Молодой бренд одежды, который тесно сотрудничает с дизайнерами по всему миру</p>  
                         </div>
                         <Link to="/shop"><button className='Main__title-button'>Перейти к покупкам</button></Link>

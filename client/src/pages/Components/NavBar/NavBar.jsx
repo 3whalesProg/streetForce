@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom"
 import './NavBar.scss'
+import OffCanvas from "../CanvasReg/OffCanvas"
 
 const setIsActive = ({isActive}) => isActive ? "NavBar__link-item active-link" : "NavBar__link-item"
 
@@ -15,18 +16,19 @@ const NavBar = () =>{
                 </NavLink>
             </div>
             <div className="NavBar__content-center">
-            <NavLink to="/main" className={setIsActive}>
+                    <NavLink to="/main" className={setIsActive}>
                         Главная
-                    </NavLink>
-                    <NavLink to="/profile" className={setIsActive}>
-                        Личный кабинет
                     </NavLink>
                     <NavLink to="/shop" className={setIsActive}>
                         Товары
                     </NavLink>
-                    <NavLink to="/contact" className={setIsActive}>
-                        Контакты
+                    <NavLink to="/profile" className={setIsActive}>
+                        Профиль
                     </NavLink>
+                    <NavLink style={{textDecoration: 'none', color: 'black'}}>
+                        <OffCanvas/>
+                    </NavLink>
+                    
             </div>
             <div className="NavBar__content-rightSide">
                 <div className="NavBar__content-rightSide-content">
