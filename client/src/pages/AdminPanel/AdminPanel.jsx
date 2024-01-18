@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './AdminPanel.scss'
-import { createNewProduct } from '../../http/productApi';
+import { createNewProduct, deleteProduct } from '../../http/productApi';
 import { addType, getType } from '../../http/typeApi';
 import { addBrand, getBrand } from '../../http/brandApi';
 
@@ -25,6 +25,7 @@ const AdminPanel = () => {
     const [composition, setComposition] = useState('')
     const [types, setTypes] = useState([])
     const [brands, setBrands] = useState([])
+    const [deleteId, setDeleteId] = useState('')
 
 
     const addNewType = async() => {
@@ -78,6 +79,16 @@ const AdminPanel = () => {
             console.log(e)
         }
     }
+
+    const delProduct = async() => {
+        try{
+            await deleteProduct(deleteId)
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
 
 
     const handleChangeFeatures = (e) => {
@@ -267,6 +278,9 @@ const AdminPanel = () => {
                         <input onChange={(e) => {handleChangeParams(e)}} name="brand" value={sortParams.brand} type="text" className="Admin__Right-Input"   placeholder='Добавить брэнд'/>
                         <button onClick={addNewBrand}>клик</button>
                 </div>
+                УДАЛИ ПРОДУКТ
+                <input onChange={(e) => {setDeleteId(e.target.value)}} value={deleteId} className="Admin__Center-Input" placeholder='ВВЕДИ В МЕНЯ АЙДИ ПРОДУКТА'/>
+                <button onClick={() => {delProduct()}}>click</button>
             </div>
         </>
     );

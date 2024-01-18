@@ -55,6 +55,18 @@ class ProductController{
             console.log(e)
         }
     }
+
+    async deleteProduct(req, res){
+        try{
+            let {id} = req.query
+
+            const product = await Product.findByPk(id)
+            await product.destroy()
+
+            return res.json(product)
+        }
+        catch(e){console.log(e)}
+    }
 }
 
 
