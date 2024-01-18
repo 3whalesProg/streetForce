@@ -1,10 +1,11 @@
 import banner from '../../static/img/banner.png'
 import './ShopPage.scss'
-import { useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import { getProducts } from '../../http/productApi'
 import ProductList from './ProductList'
 import { getType } from '../../http/typeApi'
 import { getBrand } from '../../http/brandApi'
+import { observer } from 'mobx-react-lite'
 
 
 const ShopPage = () => {
@@ -84,6 +85,13 @@ const ShopPage = () => {
         }
     }
 
+    const addTypeBarDevice = (products) => {
+        localStorage.setItem('typebar', JSON.stringify(products))
+    }
+
+        useEffect(() => {
+            addTypeBarDevice(productList)
+        }, [productList])
 
     useEffect(() =>{
         getAllTypes()

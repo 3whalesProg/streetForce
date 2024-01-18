@@ -11,7 +11,11 @@ const Likes = observer(() => {
     const {liked} = useContext(Context)
     const [likedState, setLikedState] = useState(liked.Liked)
     const [storeState, setStoreState] = useState(JSON.parse(localStorage.getItem('likes')))
-    
+    const [typeBarState, setTypeBarState] = useState(JSON.parse(localStorage.getItem('typebar')))
+
+
+    console.log(typeBarState)
+
     const removeCard = (id) => {
         let orders  = []
         storeState.map(item => {
@@ -39,9 +43,7 @@ const Likes = observer(() => {
             </div>
             
                 <div className='Basket__Wrapper' > 
-                {
-                storeState.length !== 0
-                ?
+                
                 <div className='Basket__Wrapper-Flex'>
                     
                     {storeState.map(item => 
@@ -81,7 +83,21 @@ const Likes = observer(() => {
                         </>
                         )}
                 </div>
-           
+                        
+                {
+                storeState.length !== 0
+                ?
+                <div className='Basket__TypeBar' style={{borderRadius: '20px'}}>
+                        {
+                            typeBarState.map(el => 
+                                <>
+                                    <h1>
+                                        {el.name}
+                                    </h1>
+                                </>
+                                )
+                        }   
+                </div>  
                     :
                     <div style={{margin: '0 auto', marginTop: '250px', fontSize: '26px'}}>
                         У вас пока что нет избранных!
