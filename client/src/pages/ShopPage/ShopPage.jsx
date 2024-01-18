@@ -55,12 +55,9 @@ const ShopPage = () => {
     }
 
     const removeSortParams = (targetValue) =>{
-        for (let i in Object.keys(sortParams)){
-            if (targetValue == Object.values(sortParams)[i]){
-                setSortParams({...sortParams, [Object.keys(sortParams)[i]]: ""} )
-                setNewSortParams(true)
-            }
-        }
+        console.log(targetValue)
+        setSortParams({...sortParams, [targetValue]: ""} )
+        setNewSortParams(true)
     }
 
     const showMore = (event) =>{
@@ -77,12 +74,10 @@ const ShopPage = () => {
                 if (newSortParams){
                     setProductList([...res])
                     setNewSortParams(false)
-                    
                 }
                 else{
                     setProductList([...productList, ...res])
                 }
-                
             })}        
         catch(e){
             console.log(e)
@@ -117,13 +112,6 @@ const ShopPage = () => {
                         </div>
                         <div className="ShopPage__sort">
                             <ul className="ShopPage__sort-list">
-                                {/* <li className="ShopPage__sort-item">
-                                    <select name="sort" className='ShopPage__sort-input'>
-                                            <option name="sort" disabled selected>Сортировка</option>
-                                            <option name="sort">По цене от минимальной</option>
-                                            <option name="sort">По цене от максимальной</option>
-                                    </select>
-                                </li> */}
                                 <li className="ShopPage__sort-item">
                                     <select name="typeId" className='ShopPage__sort-input' onChange={changeSortParams}>
                                             <option name="typeId" disabled selected>Тип одежды</option>
@@ -148,16 +136,40 @@ const ShopPage = () => {
                         </div>
                         <div className="ShopPage__sortParams">
                             <ul className="ShopPage__sortParams-list">
-                                {Object.values(sortParams).map(item => {
-                                    if (item){
-                                    return(
-                                        <>
-                                        <li className="ShopPage__sortParams-item" onClick={() => {removeSortParams(item)}}>
-                                            {item}
-                                        </li>
-                                        </>
-                                    )}
-                                })}
+                                {Object.keys(sortParams).map(item => {
+                                    if (item == 'typeId' && sortParams[item]){
+                                        let name = ''
+                                        for (let i = 0; i < types.length; i++){
+                                            if (sortParams[item] == types[i].id){
+                                                name = types[i].name}}
+                                        return(
+                                            <>
+                                            <li className="ShopPage__sortParams-item" onClick={() => {removeSortParams(item)}}>
+                                             {name}
+                                            </li>
+                                            </>
+                                        )}
+                                    else if (item == 'brandId' && sortParams[item]){
+                                        let name = ''
+                                        for (let i = 0; i < brands.length; i++){
+                                            if (sortParams[item] == brands[i].id){
+                                                name = brands[i].name}}
+                                        return(
+                                            <>
+                                            <li className="ShopPage__sortParams-item" onClick={() => {removeSortParams(item)}}>
+                                             {name}
+                                            </li>
+                                            </>
+                                        )}
+                                    else if (sortParams[item]){
+                                        return(
+                                            <>
+                                            <li className="ShopPage__sortParams-item" onClick={() => {removeSortParams(item)}}>
+                                                {sortParams[item]}
+                                            </li>
+                                            </>
+                                        )}
+                                    })}
                             </ul>
                         </div>
                         <div className='ShopPage__Product'>
@@ -169,9 +181,7 @@ const ShopPage = () => {
                         </div>
                         <div className='Shop__Page-Pagination'>
                             <button className='Shop__Page-Pagination-Button' onClick={showMore}>Больше</button>
-                            
                         </div>
-
                         <img className='ShopPage-banner' src={banner} alt="" />     
                 </div>
             </div>
