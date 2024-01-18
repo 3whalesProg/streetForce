@@ -6,15 +6,21 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../main.jsx';
 import { Link } from 'react-router-dom';
 import Button from '../Components/BtnAddToBasket/Button.jsx';
+import LikeButton from '../Components/LikeBut/LikeButton.jsx';
+// import sneakers from '../../static/img/sneakers.png'
 
 const Likes = observer(() => {
     const {liked} = useContext(Context)
     const [likedState, setLikedState] = useState(liked.Liked)
     const [storeState, setStoreState] = useState(JSON.parse(localStorage.getItem('likes')))
+
     const [typeBarState, setTypeBarState] = useState(JSON.parse(localStorage.getItem('typebar')))
-
-
-    console.log(typeBarState)
+    const [renderTypeBar, setRenderTypeBar] = useState(
+        function renderTypeBar() {
+            let randomItems = typeBarState.sort(() => .5 - Math.random()).slice(0, 2);
+            return randomItems
+        }
+    )
 
     const removeCard = (id) => {
         let orders  = []
@@ -33,7 +39,17 @@ const Likes = observer(() => {
     useEffect(() => {
         setLikedState(liked.Liked)
         setStoreState(JSON.parse(localStorage.getItem('likes')))
+        setTypeBarState(JSON.parse(localStorage.getItem('typebar')))
+        setRenderTypeBar( function renderTypeBar() {
+            let randomItems = typeBarState.sort(() => .5 - Math.random()).slice(0, 2);
+            return randomItems
+        })
     }, [])
+
+    // useEffect(() => {
+
+    // }, [typeBarState])
+    // console.log(storeState)
 
     return (
         <>
@@ -87,16 +103,30 @@ const Likes = observer(() => {
                 {
                 storeState.length !== 0
                 ?
-                <div className='Basket__TypeBar' style={{borderRadius: '20px'}}>
-                        {
-                            typeBarState.map(el => 
-                                <>
-                                    <h1>
-                                        {el.name}
-                                    </h1>
-                                </>
-                                )
-                        }   
+                <div className='Liked__TypeBar' style={{borderRadius: '20px', padding: '20px'}}>
+                        <div className='Liked__TypeBar-Wrapper'>
+                            {
+                                renderTypeBar.map(el => 
+                                        <>
+                                <div className='Liked__TypeBar-Item-Left'>
+                                    <div className='Likedt__TypeBar-Item-Image'>
+                                    <img src={'http://localhost:7000/' + el.img[0]} width='200' height='200'/>
+                                    </div>
+                                    <div className='Liked__TypeBar-Item-Main'>
+                                        <p style={{marginBottom: '10px', marginTop: '10px', fontSize: '12px'}}>{el.price} Руб.</p>
+                                        <h1 style={{marginBottom: '10px'}}>{el.name}</h1>
+                                        <div style={{display: 'flex', justifyContent: 'center', gap: '10px'}}>
+                                            <LikeButton
+                                                product={el}
+                                            />
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                        </>
+                                    )
+                            }
+                        </div>
                 </div>  
                     :
                     <div style={{margin: '0 auto', marginTop: '250px', fontSize: '26px'}}>

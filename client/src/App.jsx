@@ -19,12 +19,24 @@ const App = observer(() => {
     if(localStorage.getItem('device') !== null || localStorage.getItem('device') == '[]'){
         const basket = JSON.parse(localStorage.getItem('device'))
         device.setDevices(basket)
+    } else{
+      localStorage.setItem('device', JSON.stringify([]))
     }
 
     if(localStorage.getItem('likes') !== null || localStorage.getItem('likes') == '[]'){
       const likes = JSON.parse(localStorage.getItem('likes'))
       liked.setLiked(likes)
+  } else {
+    localStorage.setItem('likes', JSON.stringify([]))
   }
+
+  if(localStorage.getItem('typebar') !== null ){
+    JSON.parse(localStorage.getItem('typebar'))
+    
+} else {
+  localStorage.setItem('typebar', JSON.stringify([]))
+}
+    
   }, [])
 
   return (

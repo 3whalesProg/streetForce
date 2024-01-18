@@ -27,3 +27,24 @@
     font-size: 14px;
     margin-bottom: 10px;
 }
+
+.Liked__TypeBar-Wrapper{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.Liked__TypeBar-Item-Main{
+    text-align: center;
+}
+
+.Liked__TypeBar-Item-Left{
+    padding: 10px;
+}
+
+.Liked__TypeBar{
+    width: 639px;
+    height: 338px;
+    background-color: #fff;
+    color: #676767;
+}
