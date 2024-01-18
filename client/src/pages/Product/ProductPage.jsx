@@ -14,7 +14,8 @@ const ProductPage = observer(() => {
     const [deviceWatch, setDeviceWatch] = useState({
         name: "",
         price: 0,
-        img: []
+        img: [],
+        sizes: []
     })
 
     const getProduct = async(id) => {
@@ -103,6 +104,7 @@ const ProductPage = observer(() => {
                            </div>
                             <div className="Product__Page-Size-Button">
                                 <button className="button_size">39</button>
+                                <button className="button_size">{deviceWatch.sizes}</button>
                                 <button className="button_size">40</button>
                                 <button className="button_size">41</button>
                                 <button className="button_size">42</button>

@@ -2,6 +2,7 @@ import './AuthPage.scss'
 import lock from '../../static/img/lock.png'
 import email from '../../static/img/email.png'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AuthPage = () => {
 
@@ -50,9 +51,11 @@ const AuthPage = () => {
                             <button className='btn-log'>Sign up</button>
                         }
                         
-                        <div className="register">
-                            <p>Dont have a account <a href='#'>Register</a></p>
-                        </div>
+                        <Link to='/main' style={{textDecoration: 'none'}}>
+                            <div className="register">
+                                <p><a href='#'>StreetForce</a></p>
+                            </div>
+                        </Link>
                     </form>
                 </div>
             </div>

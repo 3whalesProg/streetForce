@@ -20,6 +20,8 @@ const Basket = observer(() => {
         }
         return price
      }
+
+     
    
     const removeCard = (id) => {
         let orders  = []
