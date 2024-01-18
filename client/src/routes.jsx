@@ -1,4 +1,5 @@
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
+import AuthPage from "./pages/Authorization/AuthPage";
 import Basket from "./pages/Basket/Basket";
 import Profile from "./pages/Components/ProfileUser/Profile";
 import Likes from "./pages/Likes/Likes";
@@ -40,6 +41,10 @@ export const publicRoutes = [
     {
         path: 'profile',
         Component: Profile
+    },
+    {
+        path: 'auth',
+        Component: AuthPage
     }
 
 

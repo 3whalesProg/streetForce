@@ -1,11 +1,40 @@
 import {NavLink} from "react-router-dom"
 import './NavBar.scss'
 import OffCanvas from "../CanvasReg/OffCanvas"
+import { useContext } from "react"
+import { Context } from "../../../main"
 
 const setIsActive = ({isActive}) => isActive ? "NavBar__link-item active-link" : "NavBar__link-item"
 
-
 const NavBar = () =>{
+
+    const {device} = useContext(Context)
+    const {liked} = useContext(Context)
+
+   const localStorageLive = () => {
+        if(localStorage.getItem('device') !== null || localStorage.getItem('device') == '[]'){
+            const basket = JSON.parse(localStorage.getItem('device'))
+            device.setDevices(basket)
+        } else{
+          localStorage.setItem('device', JSON.stringify([]))
+        }
+    
+        if(localStorage.getItem('likes') !== null || localStorage.getItem('likes') == '[]'){
+          const likes = JSON.parse(localStorage.getItem('likes'))
+          liked.setLiked(likes)
+      } else {
+        localStorage.setItem('likes', JSON.stringify([]))
+      }
+    
+      if(localStorage.getItem('typebar') !== null ){
+        JSON.parse(localStorage.getItem('typebar'))
+        
+    } else {
+      localStorage.setItem('typebar', JSON.stringify([]))
+    }
+     }
+    
+
     return(
         <>  
         <div className="NavBar">
@@ -16,26 +45,26 @@ const NavBar = () =>{
                 </NavLink>
             </div>
             <div className="NavBar__content-center">
-                    <NavLink to="/main" className={setIsActive}>
+                    <NavLink to="/main" className={setIsActive} onClick={localStorageLive}>
                         Главная
                     </NavLink>
-                    <NavLink to="/shop" className={setIsActive}>
+                    <NavLink to="/shop" className={setIsActive} onClick={localStorageLive}>
                         Товары
                     </NavLink>
-                    <NavLink to="/profile" className={setIsActive}>
+                    <NavLink to="/profile" className={setIsActive} onClick={localStorageLive}>
                         Профиль
                     </NavLink>
-                    <NavLink style={{textDecoration: 'none', color: 'black'}}>
+                    <NavLink style={{textDecoration: 'none', color: 'black'}} onClick={localStorageLive}>
                         <OffCanvas/>
                     </NavLink>
                     
             </div>
             <div className="NavBar__content-rightSide">
                 <div className="NavBar__content-rightSide-content">
-                    <NavLink to="/basket" className={setIsActive}>
+                    <NavLink to="/basket" className={setIsActive} onClick={localStorageLive}>
                         Корзина
                     </NavLink>
-                    <NavLink to="/likes" className={setIsActive}>
+                    <NavLink to="/likes" className={setIsActive} onClick={localStorageLive}>
                         Избранное
                     </NavLink>
                 </div>

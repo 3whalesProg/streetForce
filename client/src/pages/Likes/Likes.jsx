@@ -109,9 +109,12 @@ const Likes = observer(() => {
                                 renderTypeBar.map(el => 
                                         <>
                                 <div className='Liked__TypeBar-Item-Left'>
-                                    <div className='Likedt__TypeBar-Item-Image'>
-                                    <img src={'http://localhost:7000/' + el.img[0]} width='200' height='200'/>
-                                    </div>
+                                    <Link to = {"/product/" + el.id}>
+                                        <div className='Likedt__TypeBar-Item-Image'>
+                                            <img src={'http://localhost:7000/' + el.img[0]} width='200' height='200'/>
+                                        </div>
+                                    </Link>
+                                    
                                     <div className='Liked__TypeBar-Item-Main'>
                                         <p style={{marginBottom: '10px', marginTop: '10px', fontSize: '12px'}}>{el.price} Руб.</p>
                                         <h1 style={{marginBottom: '10px'}}>{el.name}</h1>

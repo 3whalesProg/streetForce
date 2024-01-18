@@ -47,7 +47,7 @@ const Profile = () => {
                                     <div className="Profile__Right-Item-Right">
                                         <input type="text" className='input' placeholder='Фамилия'/>
                                         <input type="text" className='input' placeholder='Пол'/>
-                                        <input type="text" className='input' placeholder='Имя'/>
+                                        <input type="email" className='input' placeholder='E-mail'/>
                                     </div>
                                 </div>
                                 <button className='button' >Сохранить</button>
