@@ -69,7 +69,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 30px;
 
+}
+.NavBar__menu-burger{
+    display: none;
 }
 
 
@@ -82,3 +86,14 @@
     transition: 0.5s linear ;
     background-color: #d9d9d9;
 }
+
+@media (max-width:785px){
+    .NavBar__menu-burger{
+        display: block;
+    }
+    .NavBar__content-center{
+        display: none;
+    }
+    
+}
+

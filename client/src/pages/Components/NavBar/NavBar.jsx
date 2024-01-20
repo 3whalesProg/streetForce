@@ -3,6 +3,8 @@ import './NavBar.scss'
 import OffCanvas from "../CanvasReg/OffCanvas"
 import { useContext } from "react"
 import { Context } from "../../../main"
+import menu from '../../../static/img/menu.png'
+import MenuBurger from "./MenuBurger"
 
 const setIsActive = ({isActive}) => isActive ? "NavBar__link-item active-link" : "NavBar__link-item"
 
@@ -40,6 +42,9 @@ const NavBar = () =>{
         <div className="NavBar">
         <div className="NavBar__content">
             <div className="NavBar__content-leftSide">
+                <NavLink onClick={localStorageLive}>
+                    <MenuBurger/>
+                </NavLink>
                 <NavLink to='/main' style={{textDecoration: 'none'}}>
                     <div className="NavBar-logo">StreetForce</div>
                 </NavLink>

@@ -123,6 +123,10 @@
     margin-bottom: 40px;
   }
 
+  .Main__Sweatshirt-Card-Item img{
+    margin-top: 70px;
+  }
+
   .Main__Sweatshirt-Card{
     display: flex;
   }
@@ -188,3 +192,309 @@
     padding-top: 65px;
   }
 
+  .Main__Sweatshirrt-Card{
+      display: none;
+  }
+
+  .Main__Info-add{
+    display: none;
+  }
+  .slide-cont{
+    display: none;
+  }
+
+
+ 
+
+
+  @media (max-width:1270px){
+      .Main__Collection-title{
+        font-size: 38px;
+      }
+      .Main__Container-Card-Item img{
+          width: 290px;
+          height: 200px;
+      }
+      .Main__Container-Card-Item{
+        width: 331px;
+        height: 242px;
+      }
+      .Main__Container-Card{
+          gap: 50px;
+          width: 1129px;
+      }
+      .Main__Sweatshirt-title {
+        font-size: 38px;
+      }
+      .Main__Sweatshirt-Card-Item {
+        width: 411px;
+        height: 410px;
+      }
+      .Main__Sweatshirt-Card-Item img {
+        width: 320px;
+        height: 300px;
+        margin-top: 50px;
+      }
+
+      .Main__Sweatshirt-Card-Items {
+        height: 231px;
+        width: 315px;
+        padding-top: 15px;
+    }
+    .Main__Sweatshirt-Card-Items img{
+      width: 240px;
+      height: 200px;
+  }
+  .Main__Info-title{
+    font-size: 38px;
+  }
+  .Main__Info-Block-Text{
+    font-size: 16px;
+    width: 469px;
+    margin-right: 174px;
+  }
+
+  .Main__Info img {
+    width: 500px;
+    height: 328px;
+  }
+  .Main__title-text{
+    font-size: 28px;
+  }
+  }
+
+  @media (max-width:1150px){
+
+    .Main__Container-Card {
+      gap: 10px;
+      width: 985px;
+  }
+  
+    .Main__Container-Card-Item {
+      width: 318px;
+      height: 242px;
+  }
+
+  .Main__Container-Card-Item img {
+    width: 285px;
+    height: 200px;
+}
+
+  .Main__Sweatshirt-Card-Items {
+    height: 231px;
+    width: 240px;
+}
+
+.Main__Info-Block-Text {
+  margin-right: 17px;
+}
+  }
+
+  @media (max-width:1150px){
+    .Main__Container-Card {
+      gap: 10px;
+      width: 743px;
+  }
+
+  .Main__Container-Card-Item {
+    width: 238px;
+    height: 207px;
+}
+.Main__Container-Card-Item img {
+  width: 210px;
+  height: 162px;
+}
+
+// .Main__Sweatshirt-Card-Item {
+//   height: 231px;
+//   width: 240px;
+// }
+// .Main__Sweatshirt-Card-Item img {
+//   margin-top: 9px;
+//   height: 207px;
+//   width: 238px;
+// }
+
+.Main__Sweatshirt-Card{
+  display: none;
+}
+.Main__Sweatshirrt-Card{
+  display: flex;
+}
+
+.Main__Sweatshirrt-Card {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+.Main__Sweatshirrt-Card-Item{
+  margin-bottom: 30px;
+}
+
+.Main__Sweatshirrt-Card-Item img{
+  border-radius: 30px;
+  width: 250px;
+  height: 200px;
+}
+
+.Main__Info{
+  display: none;
+}
+
+.Main__Info-add{
+  display: block;
+  // justify-content: center;
+}
+// .Main__Info-title-add{
+//   display: block;
+//   font-size: 38px;
+//     letter-spacing: .15rem;
+//     margin-bottom: 44px
+// }
+
+.Main__Info-add-content{
+  display: flex;
+  flex-direction: column;
+  margin-top: 44px;
+  align-items: center;
+}
+.Main__Info-add{
+  margin-bottom: 44px;
+}
+
+.Main__Info-add-content img {
+  display: flex;
+  // width: 1000px;
+  // height: 400px;
+}
+
+.Main__Info-Block-Text {
+  font-size: 16px;
+  // width: 886px;
+  // margin-right: 174px;
+  text-align: center;
+}
+
+.Main__Container-Card-Wrap{
+  display: flex;
+    justify-content: center;
+}
+.Main__Collection-title {
+  font-size: 38px;
+  /* margin: 0 auto; */
+  text-align: center;
+}
+
+.Main__Sweatshirt-title {
+  font-size: 38px;
+  text-align: center;
+}
+
+.Main__Info-title {
+  font-size: 38px;
+  text-align: center;
+}
+
+.Main__title-head {
+  font-size: 40px;
+  margin-top: 20px;
+}
+.Main__title-text {
+  font-size: 20px;
+}
+.Main__title-button {
+  font-size: 14px ;
+}
+  }
+
+
+  @media (max-width:785px){
+    .slide-cont{
+      display: block;
+      margin-left: 30px;
+    }
+    .Main__Container {
+      max-width: 713px;
+  }
+  .slide-cont img {
+    // border-radius: 30px;
+    width: 300px;
+    height: 230px;
+}
+.Main__Collection-title {
+  font-size: 38px;
+  /* margin: 0 auto; */
+  text-align: center;
+}
+.Main__Container-Card-Wrap{
+  display: none;
+}
+
+.slide-wrapper {
+  padding-left: 142px;
+  padding-right: 176px;
+}
+  
+  }
+
+  @media (max-width:585px){
+    .Main__Sweatshirrt-Card {
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Main__Sweatshirt-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .Main__Info-add-content img {
+        display: flex;
+        width: 349px;
+        height: 200px;
+    }
+
+    .Main__Info-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .Main__Info-Block-Text {
+        font-size: 13px;
+        text-align: center;
+        width: 311px;
+    }
+
+    .slide-wrapper {
+      padding-left: 0px;
+      padding-right: 0px;
+      max-width: 310px;
+      margin-right: 30px;
+  }
+
+  .slide-wrapper img {
+    width: 270px;
+}
+.Main__Collection{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Main__Collection-title {
+  font-size: 32px;
+  /* margin: 0 auto; */
+  text-align: center;
+}
+.Main__title-head {
+  font-size: 24px;
+  margin-top: 20px;
+}
+.Main__title-text {
+  font-size: 10px;
+}
+.Main__title-button {
+  font-size: 9px;
+}
+}
