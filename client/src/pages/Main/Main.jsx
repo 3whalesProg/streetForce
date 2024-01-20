@@ -14,7 +14,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Main = () => {
     var settings = {
-        dots: true,
+        // dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -82,7 +82,7 @@ const Main = () => {
                     </div>
                     <div className='Main__Sweatshirt-Card'>
                         <div className='Main__Sweatshirt-Card-Item'>
-                            <img src={sweatwear} width="470" height="396" />
+                            <img src={sweatwear} width="470" height="396"/>
                         </div>
                         <div className='Main__Sweatshirt-Card-Second'>
 

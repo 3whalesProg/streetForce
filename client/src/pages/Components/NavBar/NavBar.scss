@@ -36,6 +36,7 @@
 .NavBar__content-rightSide-content{
     display: flex;
     height: 60px;
+    gap: 30px;
     align-items: center;
 }
 .NavBar__links{
@@ -93,6 +94,10 @@
     }
     .NavBar__content-center{
         display: none;
+    }
+
+    .NavBar__content-rightSide-content img{
+        height: 20px;
     }
     
 }

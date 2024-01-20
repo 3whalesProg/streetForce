@@ -3,8 +3,10 @@ import './NavBar.scss'
 import OffCanvas from "../CanvasReg/OffCanvas"
 import { useContext } from "react"
 import { Context } from "../../../main"
-import menu from '../../../static/img/menu.png'
 import MenuBurger from "./MenuBurger"
+import love from '../../../static/img/love.png'
+import shopBag from '../../../static/img/shopBag.png'
+
 
 const setIsActive = ({isActive}) => isActive ? "NavBar__link-item active-link" : "NavBar__link-item"
 
@@ -66,11 +68,11 @@ const NavBar = () =>{
             </div>
             <div className="NavBar__content-rightSide">
                 <div className="NavBar__content-rightSide-content">
-                    <NavLink to="/basket" className={setIsActive} onClick={localStorageLive}>
-                        Корзина
+                    <NavLink to="/basket" onClick={localStorageLive}>
+                        <img src={shopBag} height='22'/>
                     </NavLink>
-                    <NavLink to="/likes" className={setIsActive} onClick={localStorageLive}>
-                        Избранное
+                    <NavLink to="/likes" height='22' onClick={localStorageLive}>
+                        <img src={love}/>
                     </NavLink>
                 </div>
             </div>
