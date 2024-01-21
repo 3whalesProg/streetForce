@@ -7,6 +7,7 @@ import LikeButton from "../Components/LikeBut/LikeButton";
 import { Carousel } from 'react-bootstrap';
 import Button from '../Components/BtnAddToBasket/Button';
 
+
 const ProductPage = observer(() => {
     const location = useLocation()
 
@@ -44,7 +45,7 @@ const ProductPage = observer(() => {
         <div className="Product__Page-Container">
             <div className="Product__Page-Wrapper">
               <div className="Product__Page-Info">
-                <div className="Product__Page-Slider" style={{width: '400px', marginRight: '55px', borderRadius: '15px', height: '400px'}}>
+                <div className="Product__Page-Slider" style={{width: '400px', marginRight: '55px',marginLeft: '45px', borderRadius: '15px', height: '400px'}}>
                 <Carousel style={{borderRadius: '15px'}}>
         <Carousel.Item>
                 <img

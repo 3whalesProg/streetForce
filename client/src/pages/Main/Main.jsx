@@ -156,26 +156,7 @@ const Main = () => {
                             <p>На данный момент наш магазин работает только по Костроме и чтобы оформить заказ вам требуется только кликнуть по кнопке <strong style={{textTransform: 'uppercase'}}>Оформить заказ</strong></p>
                         </div>
                     </div>
-                </div>
-                
-
-
-                    {/* <div>
-                            <img src={fendi} width="637" height="358" style={{borderRadius: '30px'}}/>
-                        </div>
-                
-                    <div className='Main__Info-Wrapper'>
-                    
-                <div className='Main__Info-Block'>
-                        
-                        <div className='Main__Info-Block-Text'>
-                            <p>На данный момент наш магазин работает только по Костроме и чтобы оформить заказ вам требуется только кликнуть по кнопке <strong style={{textTransform: 'uppercase'}}>Оформить заказ</strong></p>
-                        </div>
-                        
-                </div>
-                        
-                    </div>        */}
-                    
+                </div>    
                 
             </div>
         </>
