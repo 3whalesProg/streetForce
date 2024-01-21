@@ -3,6 +3,10 @@ import { Offcanvas } from "react-bootstrap";
 import './MenuBurger.scss'
 import menu from '../../../static/img/menu.png'
 import { NavLink } from "react-router-dom";
+import arrowRight from '../../../static/img/arrowRight.svg'
+import banner2 from '../../../static/img/banner2.jpg'
+import Footer from "../footer/Footer";
+
 const MenuBurger = () => {
 
 
@@ -21,26 +25,41 @@ const MenuBurger = () => {
         {/* <Button variant="primary" onClick={handleShow} style={{marginTop: '100px'}}>
         Launch
       </Button> */}
-      <div onClick={handleShow} className="NavBar__menu-burger">
+        <div onClick={handleShow} className="NavBar__menu-burger">
             <img src={menu}/>
-    </div>
-        <div>
-            <Offcanvas show={show} onHide={handleClose} placement="start"  style={{width: '100%'}}>
-                <Offcanvas.Header closeButton style={{justifyContent: 'flex-end'}}></Offcanvas.Header>
-                        <Offcanvas.Title style={{padding: '30px 25px 0px 25px'}}>Street Force</Offcanvas.Title>
-                <Offcanvas.Body>
-               
-                <NavLink to="/main" >
-                        <h1 onClick={refreshPage}>Главная</h1>
+        </div>
+        <div className="Burger__Menu-Wrapper">
+            <Offcanvas show={show} onHide={handleClose} placement="start" className="canvas" style={{width: '734px', background: '#f9f9f9'}}>
+                <Offcanvas.Header closeButton className="Burger__Header">
+                    <Offcanvas.Title style={{color: '#fff', fontFamily: 'Helvetica-light', fontSize: '26px'}}>Street Force</Offcanvas.Title>
+                </Offcanvas.Header>
+                        
+               <div className="Burger__Menu-Body">
+                    
+                    <NavLink to="/main" style={{textDecoration: 'none', color: 'black'}}>
+                        <div className="Burger__Menu-Item" onClick={refreshPage}>
+                            <h1 onClick={refreshPage}>Главная</h1>
+                            <img src={arrowRight} alt="arrow" height='18'/>
+                        </div>
                     </NavLink>
-                    <NavLink to="/shop">
-                        <h1 onClick={refreshPage}>Товары</h1>
+                    <div>
+                        <img src={banner2} className="Burger__Menu-Banner"/>
+                    </div>
+
+                    <NavLink to="/shop" style={{textDecoration: 'none', color: 'black'}}>
+                        <div className="Burger__Menu-Item" onClick={refreshPage}>
+                            <h1 onClick={refreshPage}>Товары</h1>
+                            <img src={arrowRight} alt="arrow" height='18'/>
+                        </div>
                     </NavLink>
-                    <NavLink to="/profile" >
-                        <h1 onClick={refreshPage}>Профиль</h1>
+
+                    <NavLink to="/profile" style={{textDecoration: 'none', color: 'black'}}>
+                        <div className="Burger__Menu-Item" onClick={refreshPage}>
+                            <h1>Профиль</h1>
+                            <img src={arrowRight} alt="arrow" height='18'/>
+                        </div>
                     </NavLink>
-                   
-                </Offcanvas.Body>
+                </div> 
             </Offcanvas>
         </div>
      
