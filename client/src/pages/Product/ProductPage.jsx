@@ -45,7 +45,7 @@ const ProductPage = observer(() => {
         <div className="Product__Page-Container">
             <div className="Product__Page-Wrapper">
               <div className="Product__Page-Info">
-                <div className="Product__Page-Slider" style={{width: '400px', marginRight: '55px',marginLeft: '45px', borderRadius: '15px', height: '400px'}}>
+                <div className="Product__Page-Slider" >
                 <Carousel style={{borderRadius: '15px'}}>
         <Carousel.Item>
                 <img
@@ -88,7 +88,7 @@ const ProductPage = observer(() => {
         </Carousel.Item>
         </Carousel>
                 </div>
-                <div>
+                <div className='Product__Page-Size-Main-Wrapper'>
                         <div key={deviceWatch.id} className="Product__Page-Size-Main">
                                 <div className="Product__Page-Size-Category">
                                     <h1 className="Product__Page-Size-Title">{deviceWatch.name}</h1>
@@ -111,6 +111,7 @@ const ProductPage = observer(() => {
                                 <button className="button_size">42</button>
                                 <button className="button_size">43</button>
                                 <button className="button_size">44</button>
+                                <button className="button_size">45</button>
                             </div>
                             <div>
                                 <p style={{marginTop: '20px'}}>
@@ -123,22 +124,34 @@ const ProductPage = observer(() => {
                                 />
                                 {/* {inBasket ? <button className="Product__Page-Size-Btn" disabled = {true}>Товар в корзине</button> : <button className="Product__Page-Size-Btn" onClick={addCard}>Добавить в корзину</button> } */}
                                 <button className="Product__Page-Size-Btn">Подобрать размер</button>
-                                <LikeButton product={deviceWatch}/>
+                                <div className='like__Btn-Product'>
+                                    <LikeButton product={deviceWatch}/>
+                                </div>
                             </div>
-                            <div className="Product__Page-Info-Title">
-                                <h1 style={{borderBottom: '2px solid black', paddingLeft: '10px', paddingRight: '10px', paddingBottom: '5px', cursor:'pointer'}}>О товаре</h1>
-                                <h1  style={{borderBottom: '2px solid lightgrey', paddingLeft: '20px', paddingRight: '20px' , paddingBottom: '5px', cursor:'pointer'}}>Доставка и оплата</h1>
-                            </div>
-                            <div className="Product__Page-Info-Text-Top">
-                                <h1 style={{marginTop: '30px',marginLeft: '65px', fontWeight: 'bold'}}>Описание товара</h1>
-                            </div>
+                                {/* <div className='like__Btn-Product-Addap'>
+                                    <LikeButton product={deviceWatch}/>
+                                </div> */}
+                           
+                            
                         </div>
                 </div>
               </div>
-              <div className="Product__Page-Info-Text-Bottom">
+              {/* <div className="Product__Page-Info-Text-Bottom">
                 <p>{deviceWatch.features}</p>
-              </div>
-            </div>     
+              </div> */}
+               <div className='like__Btn-Product-Addap'>
+                                    <LikeButton product={deviceWatch}/>
+                                </div>
+            </div>    
+            <div className='Product__Page-Info-Characteristick'>
+                                <div className="Product__Page-Info-Title">
+                                    <h1 style={{borderBottom: '2px solid black', paddingLeft: '10px', paddingRight: '10px', paddingBottom: '5px', cursor:'pointer'}}>О товаре</h1>
+                                    <h1  style={{borderBottom: '2px solid lightgrey', paddingLeft: '20px', paddingRight: '20px' , paddingBottom: '5px', cursor:'pointer'}}>Доставка и оплата</h1>
+                                </div>
+                                    <div className="Product__Page-Info-Text-Top">
+                                    <h1 style={{marginTop: '30px',fontWeight: 'bold'}}>Описание товара</h1>
+                                </div>
+                            </div> 
         </div>
         </>
     );

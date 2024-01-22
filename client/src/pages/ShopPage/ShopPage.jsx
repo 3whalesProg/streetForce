@@ -112,16 +112,14 @@ const ShopPage = () => {
                 <div className="ShopPage__content"> 
                         <img className='ShopPage-banner' src={banner} alt=""/>
                         <h1 className='catalog__title'>Каталог товаров</h1>
-                        <div className="ShopPage__gender">
-                            <div className="ShopPage__gender-list">
-                                <button name="gender" value='Мужчины' className='ShopPage__gender-button' onClick={changeSortParams}>Мужчины</button>
-                                <button name="gender" value = "Женщины" className='ShopPage__gender-button' onClick={changeSortParams}>Женщины</button>
-                            </div>
-                        </div>
+
+                        
+
+
                         <div className="ShopPage__sort">
                             <ul className="ShopPage__sort-list">
-                                <li className="ShopPage__sort-item">
-                                    <select name="typeId" className='ShopPage__sort-input' onChange={changeSortParams}>
+                                <li className="ShopPage__sort-item-type">
+                                    <select name="typeId" className='ShopPage__sort-input-type' onChange={changeSortParams}>
                                             <option name="typeId" disabled selected>Тип одежды</option>
                                             {types.map((type) => {
                                                 return(
@@ -142,6 +140,14 @@ const ShopPage = () => {
                                 </li>
                             </ul>
                         </div>
+
+                                            <div className="ShopPage__gender">
+                            <div className="ShopPage__gender-list">
+                                <button name="gender" value='Мужчины' className='ShopPage__gender-button' onClick={changeSortParams}>Мужчины</button>
+                                <button name="gender" value = "Женщины" className='ShopPage__gender-button' onClick={changeSortParams}>Женщины</button>
+                            </div>
+                        </div>
+
                         <div className="ShopPage__sortParams">
                             <ul className="ShopPage__sortParams-list">
                                 {Object.keys(sortParams).map(item => {

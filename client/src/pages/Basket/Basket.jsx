@@ -55,7 +55,7 @@ const Basket = observer(() => {
                     storeState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
-                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white',marginBottom: '20px', width: '750px', borderRadius: '20px'}}>
+                        <div className='Basket__Wrapper-Flex-Item'>
                             <div className="Basket__flex-item-content" style={{display: 'flex', position: 'relative'}}>
                                 <Link to = {"/product/" + item.id}>
                                 <div className='Basket__Wrapper-Flex-Card-Img'>
@@ -66,7 +66,7 @@ const Basket = observer(() => {
                                 <div className='Basket__Wrapper-Flex-Items'>
                                     <div className='Basket__Wrapper-Flex-Items-Title'>
                                         <h1 style={{maxWidth: '375px'}}>{item.name}</h1>
-                                        <img src={cross} onClick={() => removeCard(item.id)}  style={{position: 'absolute', right: '20px', cursor: "pointer"}} className='svg'/>
+                                        <img src={cross} onClick={() => removeCard(item.id)}  className='svg'/>
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Text'>
@@ -103,14 +103,14 @@ const Basket = observer(() => {
                             <div className='Basket__TypeBar-Button'>
                                 <button className='button' style={{borderRadius: '#fff'}}>Оформить заказ</button>
                             </div>
-                            <div>
+                            <div  className='Basket__TypeBar-Img'>
                                 <img src={banerTwo} height='300' width='500' style={{borderRadius: '20px'}}/>
                             </div>
                             </div>
                             
                         </div>  
                             :
-                            <div style={{margin: '0 auto', marginTop: '250px', fontSize: '26px'}}>
+                            <div className='Typebar__None' >
                                 Корзина пока что пустая!
                             </div>
                         }

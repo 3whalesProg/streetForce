@@ -65,7 +65,7 @@ const Likes = observer(() => {
                     {storeState.map(item => 
                         <>
                         <div style={{display:'flex', gap: '20px'}}>
-                        <div className='Basket__Wrapper-Flex-Item' style={{ background: 'white', marginBottom: '20px', width: '750px', borderRadius: '20px'}}>
+                        <div className='Basket__Wrapper-Flex-Item'>
                             <div className="Basket__flex-item-content" style={{display: 'flex', position: 'relative'}}>
                                 <Link to = {"/product/" + item.id}>
                                 <div className='Basket__Wrapper-Flex-Card-Img'>
@@ -75,7 +75,7 @@ const Likes = observer(() => {
                                 <div className='Basket__Wrapper-Flex-Items'>
                                     <div className='Basket__Wrapper-Flex-Items-Title'>
                                         <h1 style={{maxWidth: '375px'}}>{item.name}</h1>
-                                        <img src={cross}  style={{position: 'absolute', right: '20px', cursor: "pointer"}} onClick={() => removeCard(item.id)}/>
+                                        <img src={cross} className='svg' onClick={() => removeCard(item.id)}/>
                                     </div>
 
                                     <div className='Basket__Wrapper-Flex-Items-Text'>
@@ -116,14 +116,15 @@ const Likes = observer(() => {
                                     </Link>
                                     
                                     <div className='Liked__TypeBar-Item-Main'>
-                                        <p style={{marginBottom: '10px', marginTop: '10px', fontSize: '12px'}}>{el.price} Руб.</p>
-                                        <h1 style={{marginBottom: '10px'}}>{el.name}</h1>
-                                        <div style={{display: 'flex', justifyContent: 'center', gap: '10px'}}>
-                                            <LikeButton
-                                                product={el}
-                                            />
+                                        <div>
+                                            <p style={{marginBottom: '10px', marginTop: '10px', fontSize: '12px'}}>{el.price} Руб.</p>
+                                            <h1 style={{marginBottom: '10px'}}>{el.name}</h1>
+                                            <div>
+                                                <LikeButton
+                                                    product={el}
+                                                />
+                                            </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
                                         </>

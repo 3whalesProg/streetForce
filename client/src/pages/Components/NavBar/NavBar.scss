@@ -103,4 +103,12 @@
     }
     
 }
+@media (max-width:360px){
+    .NavBar__content-rightSide {
+        display: flex;
+        height: 60px;
+        margin-right: 20px;
+        margin-left: 24px;
+    }
+}
 
