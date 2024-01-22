@@ -5,7 +5,6 @@ import { getProducts } from '../../http/productApi'
 import ProductList from './ProductList'
 import { getType } from '../../http/typeApi'
 import { getBrand } from '../../http/brandApi'
-import { observer } from 'mobx-react-lite'
 
 
 const ShopPage = () => {

@@ -133,7 +133,7 @@ const Likes = observer(() => {
                         </div>
                 </div>  
                     :
-                    <div style={{margin: '0 auto', marginTop: '250px', fontSize: '26px'}}>
+                    <div className='Typebar__None'>
                         У вас пока что нет избранных!
                     </div>
                     }

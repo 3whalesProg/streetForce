@@ -14,6 +14,13 @@
     
 }
 
+.Typebar__None{
+    margin: 0 auto;
+    margin-top: 250px;
+    font-size: 26px;
+}
+
+
 .Likes__TypeBar-Card-Info{
     font-family: Helvetica-light;
 }
@@ -244,11 +251,11 @@
         right: 160px;
         cursor: pointer;
     }
-    .ShopPage__like {
-        cursor: pointer;
-        right: 139px;
-        position: absolute;
-    }
+    // .ShopPage__like {
+    //     cursor: pointer;
+    //     right: 139px;
+    //     position: absolute;
+    // }
     .Basket__Wrapper-Flex-Items-Price {
         display: flex;
         margin-top: 50px;
@@ -257,6 +264,25 @@
         justify-content: space-between;
         margin-bottom: 20px;
         font-size: 17px;
+    }
+
+    .Product__Page-Size-Btn {
+        width: 139px;
+        height: 37px;
+        border-radius: 10px;
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid #fff;
+        color: #000000;
+        text-transform: uppercase;
+        font-size: 7px;
+        letter-spacing: 0.15rem;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        /* margin-right: 220px; */
+        margin-top: 10px;
     }
 
     .Basket__Wrapper-Flex-Items {
@@ -404,11 +430,11 @@
         height: 156px;
     }
 
-    .ShopPage__like {
-        cursor: pointer;
-        right: 110px;
-        position: absolute;
-    }
+    // .ShopPage__like {
+    //     cursor: pointer;
+    //     right: 110px;
+    //     position: absolute;
+    // }
 
     .svg {
         position: absolute;
@@ -445,11 +471,11 @@
         right: 150px;
         cursor: pointer;
     }
-    .ShopPage__like {
-        cursor: pointer;
-        right: 130px;
-        position: absolute;
-    }
+    // .ShopPage__like {
+    //     cursor: pointer;
+    //     right: 130px;
+    //     position: absolute;
+    // }
     .Basket__Title {
         margin: 20px 0px 30px 0px;
         font-family: Helvetica-Regular;
@@ -480,6 +506,7 @@
         height: 38px;
         font-size: 10px;
     }
+
 }
 
 @media (max-width:400px){

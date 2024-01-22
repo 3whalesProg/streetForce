@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import LikeButton from "../Components/LikeBut/LikeButton";
 import { Carousel } from 'react-bootstrap';
 import Button from '../Components/BtnAddToBasket/Button';
+import Dropdown from '../ShopPage/Dropdown';
 
 
 const ProductPage = observer(() => {
@@ -16,8 +17,10 @@ const ProductPage = observer(() => {
         name: "",
         price: 0,
         img: [],
-        sizes: []
+        sizes: ''
     })
+
+    const [selected, setSelected] = useState('Выберете размер')
 
     const getProduct = async(id) => {
         try{
@@ -113,6 +116,14 @@ const ProductPage = observer(() => {
                                 <button className="button_size">44</button>
                                 <button className="button_size">45</button>
                             </div>
+
+                            <div className="Product__Page-Size-Dropdown">
+                                    <Dropdown
+                                        selected={selected}
+                                        setSelected={setSelected}
+                                        device={deviceWatch.sizes}
+                                    />
+                            </div>
                             <div>
                                 <p style={{marginTop: '20px'}}>
                                     Не нашли подходящего размера? Подберем его для вас!
@@ -127,32 +138,24 @@ const ProductPage = observer(() => {
                                 <div className='like__Btn-Product'>
                                     <LikeButton product={deviceWatch}/>
                                 </div>
-                            </div>
-                                {/* <div className='like__Btn-Product-Addap'>
-                                    <LikeButton product={deviceWatch}/>
-                                </div> */}
-                           
-                            
-                        </div>
-                </div>
-              </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               {/* <div className="Product__Page-Info-Text-Bottom">
                 <p>{deviceWatch.features}</p>
               </div> */}
-               <div className='like__Btn-Product-Addap'>
-                                    <LikeButton product={deviceWatch}/>
-                                </div>
             </div>    
-            <div className='Product__Page-Info-Characteristick'>
-                                <div className="Product__Page-Info-Title">
-                                    <h1 style={{borderBottom: '2px solid black', paddingLeft: '10px', paddingRight: '10px', paddingBottom: '5px', cursor:'pointer'}}>О товаре</h1>
-                                    <h1  style={{borderBottom: '2px solid lightgrey', paddingLeft: '20px', paddingRight: '20px' , paddingBottom: '5px', cursor:'pointer'}}>Доставка и оплата</h1>
-                                </div>
-                                    <div className="Product__Page-Info-Text-Top">
-                                    <h1 style={{marginTop: '30px',fontWeight: 'bold'}}>Описание товара</h1>
-                                </div>
-                            </div> 
-        </div>
+                <div className='Product__Page-Info-Characteristick'>
+                        <div className="Product__Page-Info-Title">
+                            <h1 style={{borderBottom: '2px solid black', paddingLeft: '10px', paddingRight: '10px', paddingBottom: '5px', cursor:'pointer'}}>О товаре</h1>
+                            <h1  style={{borderBottom: '2px solid lightgrey', paddingLeft: '20px', paddingRight: '20px' , paddingBottom: '5px', cursor:'pointer'}}>Доставка и оплата</h1>
+                        </div>
+                        <div className="Product__Page-Info-Text-Top">
+                            <h1 style={{marginTop: '30px',fontWeight: 'bold'}}>Описание товара</h1>
+                        </div>
+                </div> 
+            </div>
         </>
     );
 });

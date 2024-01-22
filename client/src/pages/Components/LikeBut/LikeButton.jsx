@@ -2,7 +2,7 @@ import like from '../../../static/img/like.svg'
 import { useContext, useEffect, useState } from "react";
 import { Context } from '../../../main.jsx';
 import ilikes from '../../../static/img/ilikes.svg' 
-
+import './LikeButton.scss'
 
 const LikeButton = ({product}) => { //input product {name: "", price: 0, img: [], descr: ""}
     const {liked} = useContext(Context)

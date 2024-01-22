@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Context } from "../../../main";
 import { useState } from "react";
 import { useEffect } from "react";
+import './Button.scss'
 
 const Button = observer(({product}) => {
 

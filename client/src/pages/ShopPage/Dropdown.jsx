@@ -2,13 +2,13 @@ import './Dropdown.scss'
 import arrow from '../../static/img/arrow.svg'
 import { useState } from 'react';
 
-const Dropdown = ({selected, setSelected, changeSortParams}) => {
+const Dropdown = ({selected, setSelected, device}) => {
 
     const [isActive, setIsActive] = useState(false)
-    const options = ['React', 'Vue', 'Angular']
+    const options = [device]
     return (
         <div className='dropdown' style={{fontFamily: 'Helvetica-light'}}>
-            <div className='dropdown-btn' name="typeId" onChange={changeSortParams} onClick={() => {
+            <div className='dropdown-btn'  name="typeId" onClick={() => {
                 setIsActive(!isActive)
             }}>
                 {selected}
