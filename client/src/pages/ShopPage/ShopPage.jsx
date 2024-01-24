@@ -106,7 +106,7 @@ const ShopPage = () => {
 
     return (
         <>
-        <div className="ShopPage__container">
+        <div className="ShopPage__container globalContainer">
             <div className="ShopPage_wrapper">
                 <div className="ShopPage__content"> 
                         <img className='ShopPage-banner' src={banner} alt=""/>

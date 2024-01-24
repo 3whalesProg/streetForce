@@ -12,7 +12,7 @@ const AdminPanel = () => {
         features: [],
         compositions: [],
         description: '',
-        sizes: '',
+        sizes: [],
         img: [],
         typeId: 0,
         brandId: 0,
@@ -25,6 +25,7 @@ const AdminPanel = () => {
     const [composition, setComposition] = useState('')
     const [types, setTypes] = useState([])
     const [brands, setBrands] = useState([])
+    const [sizes, setSizes] = useState([])
     const [deleteId, setDeleteId] = useState('')
 
 
@@ -99,6 +100,10 @@ const AdminPanel = () => {
         setComposition(e.target.value)
     }
 
+    const handleChangeSizes = (e) => {
+        setSizes(e.target.value)
+    }
+
 
     const handleImage = (e) =>{
         setSortParams({...sortParams, img: [...sortParams.img, e.target.files[0]]})
@@ -110,6 +115,14 @@ const AdminPanel = () => {
             ...sortParams, features: [...sortParams.features, features]
         })
         setFeatures('')
+    }
+
+    const addSizes = (e) => {
+        e.preventDefault()
+        setSortParams({
+            ...sortParams, sizes: [...sortParams.sizes, sizes]
+        })
+        setSizes('')
     }
 
     const addComposition = (e) => {
@@ -130,7 +143,6 @@ const AdminPanel = () => {
         const formData = new FormData()
         formData.append('name', name)
         formData.append('price', price)
-        formData.append('sizes', sizes)
         formData.append('typeId', typeId)
         formData.append('brandId', brandId)
         formData.append('gender', gender)
@@ -139,6 +151,9 @@ const AdminPanel = () => {
         formData.append('features', features)
         for (let i = 0; i < 4; i++){
             formData.append('files', img[i])
+        }
+        for (let i = 0; i < sizes.length; i++){
+            formData.append('sizes', sizes[i])
         }
         await createNewProduct(formData)
     }
@@ -174,7 +189,17 @@ const AdminPanel = () => {
                             цена товара
                             <input onChange={(e) => { handleChangeParams(e)}}  value={sortParams.price} name='price' className="Admin__Center-Input" placeholder='Цена товара'/>
                             размеры
-                            <input onChange={(e) => { handleChangeParams(e)}}  value={sortParams.sizes} name='sizes' className="Admin__Center-Input" placeholder='имеющиеся размеры'/>
+                            <div className="Admin__Right-Panel-Up-Input">
+                                <input onChange={(e) => { handleChangeSizes(e)}}  value={sizes} name='sizes' className="Admin__Right-Input" placeholder='Название товара...'/>
+                                <button onClick={addSizes}>add sizes</button>
+                                {sortParams.sizes.map((item) => {
+                                    return(
+                                        <>
+                                        {item}
+                                        </>
+                                    )
+                                })}
+                            </div>
 
                             <select name="typeId" className='ShopPage__sort-input' onChange={handleChangeParams}>
                                         <option name="typeId" disabled selected>Тип одежды</option>

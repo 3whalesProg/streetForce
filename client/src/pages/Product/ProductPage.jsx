@@ -17,7 +17,7 @@ const ProductPage = observer(() => {
         name: "",
         price: 0,
         img: [],
-        sizes: ''
+        sizes: []
     })
 
     const [selected, setSelected] = useState('Выберете размер')
@@ -45,6 +45,7 @@ const ProductPage = observer(() => {
 
     return (
         <>
+        <div className="globalContainer">
         <div className="Product__Page-Container">
             <div className="Product__Page-Wrapper">
               <div className="Product__Page-Info">
@@ -107,14 +108,12 @@ const ProductPage = observer(() => {
                                 </p>
                            </div>
                             <div className="Product__Page-Size-Button">
-                                <button className="button_size">39</button>
-                                <button className="button_size">{deviceWatch.sizes}</button>
-                                <button className="button_size">40</button>
-                                <button className="button_size">41</button>
-                                <button className="button_size">42</button>
-                                <button className="button_size">43</button>
-                                <button className="button_size">44</button>
-                                <button className="button_size">45</button>
+                                {deviceWatch.sizes.map(size => {
+                                    return(
+                                    <>
+                                        <button className="button_size">{size}</button>`
+                                    </>)
+                                })}
                             </div>
 
                             <div className="Product__Page-Size-Dropdown">
@@ -155,6 +154,7 @@ const ProductPage = observer(() => {
                             <h1 style={{marginTop: '30px',fontWeight: 'bold'}}>Описание товара</h1>
                         </div>
                 </div> 
+            </div>
             </div>
         </>
     );
